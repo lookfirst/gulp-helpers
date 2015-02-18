@@ -8,7 +8,7 @@ class CleanTask {
     this.options = options;
 
     if (!this.options.path) {
-      throw new Error('CleanTask: Path is missing from configuration!')
+      throw new Error('CleanTask: Path is missing from configuration!');
     }
 
     return this;

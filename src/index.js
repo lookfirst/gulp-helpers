@@ -9,6 +9,7 @@ class TaskMaker {
       return require('./tasks/' + name + '.js').setOptions(options).defineTask();
     } catch (e) {
       gutil.log(gutil.colors.red(e));
+      throw e;
     }
   }
 }
