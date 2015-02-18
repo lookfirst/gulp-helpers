@@ -6,7 +6,8 @@
   "scripts": {
     "test": "mocha",
     "compile": "rm -rf dist && babel src --out-dir dist",
-    "prepublish": "rm -rf dist && babel src --out-dir dist"
+    "prepublish": "rm -rf dist && babel src --out-dir dist",
+    "postinstall": "rm -rf dist && babel src --out-dir dist"
   },
   "repository": {
     "type": "git",
