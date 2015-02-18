@@ -2,16 +2,21 @@
   "name": "gulp-helpers",
   "version": "1.0.0",
   "description": "A set of tasks and helpers for gulp",
-  "main": "index.js",
+  "main": "dist/index.js",
   "scripts": {
-    "test": "mocha"
+    "test": "mocha",
+    "prepublish": "./node_modules/.bin/gulp prepublish"
   },
-	"repository": {
-      "type": "git",
-      "url": "https://github.com/lookfirst/gulp-helpers.git"
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/lookfirst/gulp-helpers.git"
   },
   "author": "",
   "license": "MIT",
+  "devDependencies": {
+    "coffee-script": "^1.9.0",
+    "gulp-babel": "^4.0.0"
+  },
   "dependencies": {
     "gulp": "^3.8.11",
     "gulp-util": "~3.0.3",
