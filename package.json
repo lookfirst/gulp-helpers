@@ -11,5 +11,11 @@
       "url": "https://github.com/lookfirst/gulp-helpers.git"
   },
   "author": "",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "gulp": "^3.8.11",
+    "gulp-util": "~3.0.3",
+    "del": "^1.1.1",
+    "vinyl-paths": "^1.0.0"
+  }
 }
