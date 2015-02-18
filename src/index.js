@@ -1,7 +1,16 @@
+var gutil = require('gulp-util');
+
 class TaskMaker {
   defineTask(name, options) {
-    return require('tasks/' + name + '.js').setOptions(options).defineTask();
+    if (!options.taskDeps) {
+      options.taskDeps = [];
+    }
+    try {
+      return require('./tasks/' + name + '.js').setOptions(options).defineTask();
+    } catch (e) {
+      gutil.log(gutil.colors.red(e));
+    }
   }
 }
 
-export var TaskMaker = new TaskMaker();
+module.exports = new TaskMaker();
