@@ -1,5 +1,3 @@
-var gulp = require('gulp');
-
 var vinylPaths = require('vinyl-paths');
 var del = require('del');
 
@@ -14,7 +12,7 @@ class CleanTask {
     return this;
   }
 
-  defineTask() {
+  defineTask(gulp) {
     let options = this.options;
     gulp.task('clean', options.taskDeps, function() {
       return gulp.src([ options.path ]).pipe(vinylPaths(del));

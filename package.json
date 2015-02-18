@@ -22,8 +22,10 @@
     "compile": "babel src --out-dir dist",
     "prepublish": "babel src --out-dir dist"
   },
+  "devDependencies": {
+    "babel": "^4.3.0"
+  },
   "dependencies": {
-    "babel": "^4.3.0",
     "gulp": "^3.8.11",
     "gulp-util": "~3.0.3",
     "del": "^1.1.1",
