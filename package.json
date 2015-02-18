@@ -6,6 +6,10 @@
   "scripts": {
     "test": "mocha"
   },
+	"repository": {
+      "type": "git",
+      "url": "https://github.com/lookfirst/gulp-helpers.git"
+  },
   "author": "",
   "license": "MIT"
 }
