@@ -1,25 +1,22 @@
 {
   "name": "gulp-helpers",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "A set of tasks and helpers for gulp",
   "main": "dist/index.js",
   "scripts": {
     "test": "mocha",
     "compile": "rm -rf dist && babel src --out-dir dist",
-    "prepublish": "rm -rf dist && babel src --out-dir dist",
-    "postinstall": "rm -rf dist && babel src --out-dir dist"
+    "prepublish": "rm -rf dist && babel src --out-dir dist"
   },
   "repository": {
     "type": "git",
     "url": "https://github.com/lookfirst/gulp-helpers.git"
   },
   "readme": "Readme!",
-  "author": "",
+  "author": "Jon Stevens <latchkey@gmail.com>",
   "license": "MIT",
-  "devDependencies": {
-    "babel": "^4.3.0"
-  },
   "dependencies": {
+    "babel": "^4.3.0",
     "gulp": "^3.8.11",
     "gulp-util": "~3.0.3",
     "del": "^1.1.1",
