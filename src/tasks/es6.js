@@ -35,11 +35,11 @@ class ES6Task {
     this.options = options;
 
     if (!this.options.source) {
-      throw new Error('LessTask: Source is missing from configuration!');
+      throw new Error('ES6Task: Source is missing from configuration!');
     }
 
     if (!this.options.output) {
-      throw new Error('LessTask: Output is missing from configuration!');
+      throw new Error('ES6Task: Output is missing from configuration!');
     }
 
     if (!this.options.compilerOptions) {
@@ -85,3 +85,4 @@ class ES6Task {
 }
 
 module.exports = new ES6Task();
+module.exports.compilerOptions = compilerOptions;
