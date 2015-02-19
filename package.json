@@ -39,6 +39,8 @@
     "gulp-ng-html2js": "lookfirst/gulp-ng-html2js#exports",
     "gulp-ng-annotate": "^0.5.2",
     "gulp-plumber": "^0.6.6",
+    "gulp-rename": "^1.2.0",
+    "gulp-replace-task": "^0.1.0",
     "gulp-sourcemaps": "^1.3.0",
     "gulp-util": "~3.0.3",
     "less-plugin-clean-css": "^1.5.0",
