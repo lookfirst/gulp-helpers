@@ -22,7 +22,7 @@ class CopyTask {
 
   defineTask(gulp) {
     let options = this.options;
-    gulp.task(options.taskName, function() {
+    gulp.task(options.taskName, options.taskDeps, function() {
       let chain = gulp.src(options.path)
         .pipe(cache(options.taskName))
         .pipe(plumber());

@@ -24,7 +24,7 @@ class LessTask {
 
   defineTask(gulp) {
     let options = this.options;
-    gulp.task(options.taskName, function() {
+    gulp.task(options.taskName, options.taskDeps, function() {
       gulp.src(options.path)
         .pipe(cache(options.taskName))
         .pipe(plumber())

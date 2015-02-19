@@ -63,7 +63,7 @@ class ES6Task {
   defineTask(gulp) {
     let options = this.options;
 
-    gulp.task(options.taskName, function() {
+    gulp.task(options.taskName, options.taskDeps, function() {
       let chain = gulp.src(options.source);
 
       chain = chain.pipe(cache(options.taskName))
