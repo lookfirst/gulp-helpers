@@ -6,9 +6,13 @@ class TaskMaker {
   }
 
   defineTask(name, options) {
+    if (!options.taskName) {
+      options.taskName = name;
+    }
     if (!options.taskDeps) {
       options.taskDeps = [];
     }
+
     try {
       return require('./tasks/' + name + '.js').setOptions(options).defineTask(this.gulp);
     } catch (e) {

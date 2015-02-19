@@ -14,7 +14,7 @@ class CleanTask {
 
   defineTask(gulp) {
     let options = this.options;
-    gulp.task('clean', options.taskDeps, function() {
+    gulp.task(options.taskName, options.taskDeps, function() {
       return gulp.src([ options.path ]).pipe(vinylPaths(del));
     });
   }
