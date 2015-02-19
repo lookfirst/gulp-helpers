@@ -33,7 +33,7 @@ class LessTask {
         .pipe(less({plugins: [ cleancss ]}))
         .pipe(sourcemaps.write('.'))
         .pipe(gulp.dest(options.output))
-        .pipe(browserSync.reload({ stream: true }))
+        .pipe(browserSync.reload({ stream: true }));
     });
   }
 }
