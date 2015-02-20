@@ -28,7 +28,12 @@ class GulpHelpers {
       this.tm = new TaskMaker(gulp);
     }
     return this.tm;
-  }
+  };
+
+  situation() {
+    let sit = process.env.SITUATION || 'development';
+    gutil.log(gutil.colors.blue(`Running as: ${sit}`));
+  };
 }
 
 module.exports = new GulpHelpers();
