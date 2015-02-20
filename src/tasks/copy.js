@@ -39,8 +39,10 @@ class CopyTask {
         chain = chain.pipe(rename(options.rename));
       }
 
-      chain.pipe(gulp.dest(options.output))
+      chain = chain.pipe(gulp.dest(options.output))
         .pipe(browserSync.reload({ stream: true }));
+
+      return chain;
     });
   }
 }

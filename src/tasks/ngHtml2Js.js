@@ -35,7 +35,7 @@ class NgHtml2JsTask {
   defineTask(gulp) {
     let options = this.options;
     gulp.task(options.taskName, options.taskDeps, function() {
-      gulp.src(options.templates)
+      return gulp.src(options.templates)
         .pipe(cache(options.taskName))
         .pipe(plumber())
         .pipe(changed(options.output, { extension: '.html' }))

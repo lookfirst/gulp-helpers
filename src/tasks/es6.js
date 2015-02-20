@@ -75,11 +75,13 @@ class ES6Task {
         chain = chain.pipe(coffee(options.coffeeOptions).on('error', gutil.log));
       }
 
-      chain.pipe(to5(options.compilerOptions))
+      chain = chain.pipe(to5(options.compilerOptions))
         .pipe(ngAnnotate({sourceMap: true}))
         .pipe(sourcemaps.write('.'))
         .pipe(gulp.dest(options.output))
         .pipe(browserSync.reload({stream: true}));
+
+      return chain;
     });
   }
 }

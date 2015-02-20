@@ -13,8 +13,10 @@ class KarmaTask {
 
   defineTask(gulp) {
     let options = this.options;
-    gulp.task(options.taskName, options.taskDeps, function (done) {
-      karma.start({configFile: options.configFile}, done);
+    gulp.task(options.taskName, options.taskDeps, function () {
+      new Promise((resolve) =>
+        karma.start({configFile: options.configFile}, resolve)
+      );
     });
   }
 }

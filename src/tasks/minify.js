@@ -19,7 +19,7 @@ class MinifyTask {
   defineTask(gulp) {
     let options = this.options;
     gulp.task(options.taskName, options.taskDeps, function() {
-      gulp.src(options.path)
+      return gulp.src(options.path)
         .pipe(sourcemaps.init({loadMaps: true}))
         .pipe(uglify({ mangle: true }))
         .pipe(sourcemaps.write('.'))
