@@ -51,13 +51,15 @@ A complete example is over in my [systemjs-seed project](https://github.com/look
 
 ## API
 
+### defineTask
+
 ```
 taskMaker.defineTask(NAME_OF_GULPHELPERS_TASK, OPTIONS);
 ```
 
 The named gulp-helper task will be loaded via `require` and you pass options into it. There is a whole bunch of tasks already defined, [take a look](https://github.com/lookfirst/gulp-helpers/tree/master/src/tasks) at the ones you need in order to figure out the options you can pass in. I've tried to keep the naming pretty consistent between tasks. For example, `src` and `dest` will always map to the arguments to `gulp.src()` and `gulp.dest()`.
 
------
+### situation
 
 ```
 var situation = gulpHelpers.situation();
