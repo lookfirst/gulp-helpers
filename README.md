@@ -33,7 +33,7 @@ gulp.task('less', function () {
 });
 ```
 
-Using gulp-helpers, we end up with this single line in the gulpfile to define [the task](https://github.com/lookfirst/gulp-helpers/blob/master/src/tasks/less.js).
+Using gulp-helpers, we end up with a single line in the gulpfile to define [the task](https://github.com/lookfirst/gulp-helpers/blob/master/src/tasks/less.js).
 
 ```
 npm install gulp-helpers --save-dev
