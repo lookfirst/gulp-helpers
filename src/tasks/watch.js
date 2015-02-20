@@ -20,7 +20,7 @@ class WatchTask {
     gulp.task(options.taskName, options.taskDeps, function() {
       let watcher = gulp.watch(options.path, options.tasks);
       watcher.on('change', (event) =>
-          gutil.log(`File ${event.path} was ${event.type}, running tasks...`)
+          gutil.log(gutil.colors.purple(`File ${event.path} was ${event.type}, running tasks...`))
       );
     });
   }
