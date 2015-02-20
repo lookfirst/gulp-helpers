@@ -22,7 +22,30 @@ class TaskMaker {
   }
 }
 
+class Situation {
+  constructor() {
+    this.sit = process.env.SITUATION || 'development';
+    gutil.log(gutil.colors.blue(`Running as: ${this.sit}`));
+  }
+
+  isProduction() {
+    return this.sit === 'production';
+  }
+
+  isDevelopment() {
+    return this.sit === 'development';
+  }
+
+  value() {
+    return this.sit;
+  }
+}
+
 class GulpHelpers {
+  constructor() {
+    this.sit = new Situation();
+  }
+
   taskMaker(gulp) {
     if (! this.tm) {
       this.tm = new TaskMaker(gulp);
@@ -31,9 +54,7 @@ class GulpHelpers {
   };
 
   situation() {
-    let sit = process.env.SITUATION || 'development';
-    gutil.log(gutil.colors.blue(`Running as: ${sit}`));
-    return sit;
+    return this.sit;
   };
 }
 
