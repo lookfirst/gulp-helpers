@@ -33,6 +33,7 @@ class GulpHelpers {
   situation() {
     let sit = process.env.SITUATION || 'development';
     gutil.log(gutil.colors.blue(`Running as: ${sit}`));
+    return sit;
   };
 }
 
