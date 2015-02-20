@@ -75,3 +75,5 @@ This returns a `Situation` object, which is good for determining if we are runni
 ## Development
 
 gulp-helpers is written in ES6 and transpiled to ES5 using [babel](https://babeljs.io/). This allows us to take advantage of ES6 features while maintaining backwards compatibility. In my research, it seems like this is one of the first public [NPM projects](https://www.npmjs.com/package/gulp-helpers) to do this. Fun!
+
+Pull requests to add more tasks or improve on existing ones are welcome. I'd like this to become a useful repository for lots of projects.
