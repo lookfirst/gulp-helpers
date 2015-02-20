@@ -6,7 +6,9 @@
 A set of tasks and helpers for gulp
 
 ## Reasoning
-When writing gulpfiles, I often found myself copying entire blocks of code between files. I would make mistakes and forget things. I would improve one gulpfile and have a hard time upgrading old gulpfiles in other projects. In other words, _gulpfiles are not DRY between projects_. This project solves this issue by moving common task functionality into a set of external tasks that can be re-used.
+When writing gulpfiles, I often found myself copying entire blocks of code between files. I would make mistakes and forget things. I would improve one gulpfile and have a hard time upgrading old gulpfiles in other projects. 
+
+In other words, _gulpfiles are not DRY between projects_. This project solves this issue by moving common task functionality into a set of external tasks that can be re-used.
 
 ## Usage
 I might have a task to process my less files. It is many lines tall and does a whole bunch of stuff. I've forgotten half of what it does (wtf is [plumber()](https://github.com/floatdrop/gulp-plumber))? It also necessitates adding devDependencies to my projects `package.json` and all the `require` lines at the top of the gulpfile. _What a mess_.
@@ -63,9 +65,8 @@ taskMaker.defineTask(NAME_OF_GULPHELPERS_TASK, OPTIONS);
 
 The named gulp-helper task will be loaded via `require` and you pass options into it. There is a whole bunch of tasks already defined, [take a look](https://github.com/lookfirst/gulp-helpers/tree/master/src/tasks) at the ones you need in order to figure out the options you can pass in. I've tried to keep the naming pretty consistent between tasks. For example, `src` and `dest` will always map to the arguments to `gulp.src()` and `gulp.dest()`.
 
-There are a few options which are default across all tasks:
-* `name` - the gulp-helpers task name (String)
-* `taskName` - the name of the `gulp.task()` task, defaults to the name of the gulp-helpers task (String)
+There are a couple options which are default across all tasks:
+* `taskName` - the name of the `gulp.task()` task, defaults to the first argument of `defineTask` (String)
 * `taskDeps` - passed into `gulp.task()` as the dependent tasks (Array)
 
 ### situation
