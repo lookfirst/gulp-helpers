@@ -29,6 +29,14 @@ class NgHtml2JsTask {
       this.options.compilerOptions = es6.compilerOptions;
     }
 
+    if (!this.options.minimize) {
+      this.options.minimize = {
+        empty: true,
+        spare: true,
+        quotes: true
+      };
+    }
+
     return this;
   }
 
@@ -39,11 +47,7 @@ class NgHtml2JsTask {
         .pipe(cache(options.taskName))
         .pipe(plumber())
         .pipe(changed(options.dest, { extension: '.html' }))
-        .pipe(htmlMin({
-          empty: true,
-          spare: true,
-          quotes: true
-        }))
+        .pipe(htmlMin(options.minimize))
         .pipe(ngHtml2Js({export: 'commonjs'}))
         .pipe(insert.prepend(options.prepend))
         .pipe(to5(options.compilerOptions))

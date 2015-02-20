@@ -12,6 +12,14 @@ class HtmlMinifyTask {
       throw new Error('HtmlMinifyTask: dest is missing from configuration!');
     }
 
+    if (!this.options.minimize) {
+      this.options.minimize = {
+        empty: true,
+        spare: true,
+        quotes: true
+      };
+    }
+
     return this;
   }
 
@@ -19,11 +27,7 @@ class HtmlMinifyTask {
     let options = this.options;
     gulp.task(options.taskName, options.taskDeps, function() {
       return gulp.src(options.src)
-        .pipe(htmlMin({
-          empty: true,
-          spare: true,
-          quotes: true
-        }))
+        .pipe(htmlMin(options.minimize))
         .pipe(gulp.dest(options.dest))
     });
   }
