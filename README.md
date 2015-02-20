@@ -59,6 +59,11 @@ taskMaker.defineTask(NAME_OF_GULPHELPERS_TASK, OPTIONS);
 
 The named gulp-helper task will be loaded via `require` and you pass options into it. There is a whole bunch of tasks already defined, [take a look](https://github.com/lookfirst/gulp-helpers/tree/master/src/tasks) at the ones you need in order to figure out the options you can pass in. I've tried to keep the naming pretty consistent between tasks. For example, `src` and `dest` will always map to the arguments to `gulp.src()` and `gulp.dest()`.
 
+There are a few options which are default across all tasks:
+* `name` - the gulp-helpers task name (String)
+* `taskName` - the name of the `gulp.task()` task, defaults to the name of the gulp-helpers task (String)
+* `taskDeps` - passed into `gulp.task()` as the dependent tasks (Array)
+
 ### situation
 
 ```
