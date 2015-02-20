@@ -53,7 +53,7 @@ var taskMaker = gulpHelpers.taskMaker(gulp);
 taskMaker.defineTask('less', { src: path.less, dest: path.output });
 ```
 
-A complete example is over in my [systemjs-seed project](https://github.com/lookfirst/systemjs-seed/), which is completely dependent on gulp-helpers now. As you can see from the [gulpfile](https://github.com/lookfirst/systemjs-seed/blob/master/gulpfile.coffee), it is almost entirely configuration, with very little code.
+A full example is over in my [systemjs-seed project](https://github.com/lookfirst/systemjs-seed/), which is entirely dependent on gulp-helpers now. As you can see from the [gulpfile](https://github.com/lookfirst/systemjs-seed/blob/master/gulpfile.coffee), it is almost entirely configuration, with very little code.
 
 ## API
 
