@@ -11,12 +11,12 @@ class LessTask {
   setOptions(options) {
     this.options = options;
 
-    if (!this.options.path) {
-      throw new Error('LessTask: Path is missing from configuration!');
+    if (!this.options.src) {
+      throw new Error('LessTask: src is missing from configuration!');
     }
 
-    if (!this.options.output) {
-      throw new Error('LessTask: Output is missing from configuration!');
+    if (!this.options.dest) {
+      throw new Error('LessTask: dest is missing from configuration!');
     }
 
     return this;
@@ -25,14 +25,14 @@ class LessTask {
   defineTask(gulp) {
     let options = this.options;
     gulp.task(options.taskName, options.taskDeps, function() {
-      return gulp.src(options.path)
+      return gulp.src(options.src)
         .pipe(cache(options.taskName))
         .pipe(plumber())
-        .pipe(changed(options.output, {extension: '.less'}))
+        .pipe(changed(options.dest, {extension: '.less'}))
         .pipe(sourcemaps.init())
         .pipe(less({plugins: [ cleancss ]}))
         .pipe(sourcemaps.write('.'))
-        .pipe(gulp.dest(options.output))
+        .pipe(gulp.dest(options.dest))
         .pipe(browserSync.reload({ stream: true }));
     });
   }

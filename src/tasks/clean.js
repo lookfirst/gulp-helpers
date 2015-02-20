@@ -5,8 +5,8 @@ class CleanTask {
   setOptions(options) {
     this.options = options;
 
-    if (!this.options.path) {
-      throw new Error('CleanTask: Path is missing from configuration!');
+    if (!this.options.src) {
+      throw new Error('CleanTask: src is missing from configuration!');
     }
 
     return this;
@@ -15,7 +15,7 @@ class CleanTask {
   defineTask(gulp) {
     let options = this.options;
     gulp.task(options.taskName, options.taskDeps, function() {
-      return gulp.src([ options.path ]).pipe(vinylPaths(del));
+      return gulp.src([ options.src ]).pipe(vinylPaths(del));
     });
   }
 }

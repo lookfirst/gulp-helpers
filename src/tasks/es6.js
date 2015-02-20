@@ -34,12 +34,12 @@ class ES6Task {
   setOptions(options) {
     this.options = options;
 
-    if (!this.options.source) {
-      throw new Error('ES6Task: Source is missing from configuration!');
+    if (!this.options.src) {
+      throw new Error('ES6Task: src is missing from configuration!');
     }
 
-    if (!this.options.output) {
-      throw new Error('ES6Task: Output is missing from configuration!');
+    if (!this.options.dest) {
+      throw new Error('ES6Task: dest is missing from configuration!');
     }
 
     if (!this.options.compilerOptions) {
@@ -64,11 +64,11 @@ class ES6Task {
     let options = this.options;
 
     gulp.task(options.taskName, options.taskDeps, function() {
-      let chain = gulp.src(options.source);
+      let chain = gulp.src(options.src);
 
       chain = chain.pipe(cache(options.taskName))
         .pipe(plumber())
-        .pipe(changed(options.output, {extension: options.changedExtension}))
+        .pipe(changed(options.dest, {extension: options.changedExtension}))
         .pipe(sourcemaps.init());
 
       if (options.coffee) {
@@ -78,7 +78,7 @@ class ES6Task {
       chain = chain.pipe(to5(options.compilerOptions))
         .pipe(ngAnnotate({sourceMap: true}))
         .pipe(sourcemaps.write('.'))
-        .pipe(gulp.dest(options.output))
+        .pipe(gulp.dest(options.dest))
         .pipe(browserSync.reload({stream: true}));
 
       return chain;

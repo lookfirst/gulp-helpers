@@ -13,12 +13,12 @@ class NgHtml2JsTask {
   setOptions(options) {
     this.options = options;
 
-    if (!this.options.templates) {
-      throw new Error('NgHtml2JsTask: Templates is missing from configuration!');
+    if (!this.options.src) {
+      throw new Error('NgHtml2JsTask: src is missing from configuration!');
     }
 
-    if (!this.options.output) {
-      throw new Error('NgHtml2JsTask: Output is missing from configuration!');
+    if (!this.options.dest) {
+      throw new Error('NgHtml2JsTask: dest is missing from configuration!');
     }
 
     if (!this.options.prepend) {
@@ -35,10 +35,10 @@ class NgHtml2JsTask {
   defineTask(gulp) {
     let options = this.options;
     gulp.task(options.taskName, options.taskDeps, function() {
-      return gulp.src(options.templates)
+      return gulp.src(options.src)
         .pipe(cache(options.taskName))
         .pipe(plumber())
-        .pipe(changed(options.output, { extension: '.html' }))
+        .pipe(changed(options.dest, { extension: '.html' }))
         .pipe(htmlMin({
           empty: true,
           spare: true,
@@ -47,7 +47,7 @@ class NgHtml2JsTask {
         .pipe(ngHtml2Js({export: 'commonjs'}))
         .pipe(insert.prepend(options.prepend))
         .pipe(to5(options.compilerOptions))
-        .pipe(gulp.dest(options.output))
+        .pipe(gulp.dest(options.dest))
         .pipe(browserSync.reload({ stream: true }))
     });
   }

@@ -5,8 +5,8 @@ class JshintTask {
   setOptions(options) {
     this.options = options;
 
-    if (!this.options.path) {
-      throw new Error('JshintTask: Path is missing from configuration!');
+    if (!this.options.src) {
+      throw new Error('JshintTask: src is missing from configuration!');
     }
 
     return this;
@@ -15,7 +15,7 @@ class JshintTask {
   defineTask(gulp) {
     let options = this.options;
     gulp.task(options.taskName, options.taskDeps, function() {
-      return gulp.src(options.path)
+      return gulp.src(options.src)
         .pipe(jshint())
         .pipe(jshint.reporter(stylish))
     });
