@@ -39,7 +39,7 @@
     "gulp-insert": "^0.4.0",
     "gulp-jshint": "^1.9.2",
     "gulp-less": "^3.0.0",
-    "gulp-minify-html": "^0.1.8",
+    "gulp-minify-html": "^1.0.0",
     "gulp-ng-html2js": "lookfirst/gulp-ng-html2js#exports",
     "gulp-ng-annotate": "^0.5.2",
     "gulp-plumber": "^0.6.6",
