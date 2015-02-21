@@ -57,6 +57,10 @@ class ES6Task {
 			}
 		}
 
+		if (!this.options.ngAnnotateOptions) {
+			this.options.ngAnnotateOptions = {sourceMap: true};
+		}
+
 		return this;
 	}
 
@@ -76,8 +80,12 @@ class ES6Task {
 			}
 
 			chain = chain.pipe(to5(options.compilerOptions))
-				.pipe(ngAnnotate({sourceMap: true}))
-				.pipe(sourcemaps.write('.'))
+
+			if (options.ngAnnotate) {
+				chain = chain.pipe(ngAnnotate(options.ngAnnotateOptions));
+			}
+
+			chain = chain.pipe(sourcemaps.write('.'))
 				.pipe(gulp.dest(options.dest))
 				.pipe(browserSync.reload({stream: true}));
 
