@@ -9,81 +9,81 @@ var to5 = require('gulp-babel');
 var ngAnnotate = require('gulp-ng-annotate');
 
 var compilerOptions = {
-  filename: '',
-  filenameRelative: '',
-  blacklist: [],
-  whitelist: [],
-  sourceRoot: '',
-  moduleRoot: '',
-  moduleIds: false,
-  externalHelpers: false,
-  experimental: false,
-  format: {
-    comments: false,
-    compact: false,
-    indent: {
-      parentheses: true,
-      adjustMultilineComment: true,
-      style: '  ',
-      base: 0
-    }
-  }
+	filename: '',
+	filenameRelative: '',
+	blacklist: [],
+	whitelist: [],
+	sourceRoot: '',
+	moduleRoot: '',
+	moduleIds: false,
+	externalHelpers: false,
+	experimental: false,
+	format: {
+		comments: false,
+		compact: false,
+		indent: {
+			parentheses: true,
+			adjustMultilineComment: true,
+			style: '  ',
+			base: 0
+		}
+	}
 };
 
 class ES6Task {
-  setOptions(options) {
-    this.options = options;
+	setOptions(options) {
+		this.options = options;
 
-    if (!this.options.src) {
-      throw new Error('ES6Task: src is missing from configuration!');
-    }
+		if (!this.options.src) {
+			throw new Error('ES6Task: src is missing from configuration!');
+		}
 
-    if (!this.options.dest) {
-      throw new Error('ES6Task: dest is missing from configuration!');
-    }
+		if (!this.options.dest) {
+			throw new Error('ES6Task: dest is missing from configuration!');
+		}
 
-    if (!this.options.compilerOptions) {
-      this.options.compilerOptions = compilerOptions;
-    }
+		if (!this.options.compilerOptions) {
+			this.options.compilerOptions = compilerOptions;
+		}
 
-    if (!this.options.coffeeOptions) {
-      this.options.coffeeOptions = { bare: true };
-    }
+		if (!this.options.coffeeOptions) {
+			this.options.coffeeOptions = {bare: true};
+		}
 
-    if (!this.options.changedExtension) {
-      this.options.changedExtension = '.js';
-      if (this.options.coffee) {
-        this.options.changedExtension = '.coffee';
-      }
-    }
+		if (!this.options.changedExtension) {
+			this.options.changedExtension = '.js';
+			if (this.options.coffee) {
+				this.options.changedExtension = '.coffee';
+			}
+		}
 
-    return this;
-  }
+		return this;
+	}
 
-  defineTask(gulp) {
-    let options = this.options;
+	defineTask(gulp) {
+		let options = this.options;
 
-    gulp.task(options.taskName, options.taskDeps, function() {
-      let chain = gulp.src(options.src);
+		gulp.task(options.taskName, options.taskDeps, function() {
+			let chain = gulp.src(options.src);
 
-      chain = chain.pipe(cache(options.taskName))
-        .pipe(plumber())
-        .pipe(changed(options.dest, {extension: options.changedExtension}))
-        .pipe(sourcemaps.init());
+			chain = chain.pipe(cache(options.taskName))
+				.pipe(plumber())
+				.pipe(changed(options.dest, {extension: options.changedExtension}))
+				.pipe(sourcemaps.init());
 
-      if (options.coffee) {
-        chain = chain.pipe(coffee(options.coffeeOptions).on('error', gutil.log));
-      }
+			if (options.coffee) {
+				chain = chain.pipe(coffee(options.coffeeOptions).on('error', gutil.log));
+			}
 
-      chain = chain.pipe(to5(options.compilerOptions))
-        .pipe(ngAnnotate({sourceMap: true}))
-        .pipe(sourcemaps.write('.'))
-        .pipe(gulp.dest(options.dest))
-        .pipe(browserSync.reload({stream: true}));
+			chain = chain.pipe(to5(options.compilerOptions))
+				.pipe(ngAnnotate({sourceMap: true}))
+				.pipe(sourcemaps.write('.'))
+				.pipe(gulp.dest(options.dest))
+				.pipe(browserSync.reload({stream: true}));
 
-      return chain;
-    });
-  }
+			return chain;
+		});
+	}
 }
 
 module.exports = new ES6Task();
