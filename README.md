@@ -73,6 +73,10 @@ There are a couple options which are default across all tasks:
 ### situation
 
 ```
+export SITUATION=production
+```
+
+```
 var situation = gulpHelpers.situation();
 if (situation.isProduction()) {
   // do production stuff
@@ -81,7 +85,11 @@ if (situation.isProduction()) {
 }
 ```
 
-This returns a `Situation` object, which is good for determining if we are running in `development` mode or `production` mode. Production mode generally means that the project is bundled and minified and [browserSync](http://browsersync.io) is running without reloading turned on.
+This returns a `Situation` object, which is good for determining if we are running in `development` mode or `production` mode based on the SITUATION environment variable.
+
+Production mode generally means that the project is bundled and minified and [browserSync](http://browsersync.io) is running without reloading turned on.
+
+This makes it easy to build gulpfiles which can be deployed to PaaS solutions like Heroku, yet still allow you to test your app in production mode locally.
 
 ## Development
 
