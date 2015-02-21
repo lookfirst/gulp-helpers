@@ -6,7 +6,7 @@ describe('taskMaker', function() {
     var tm;
     beforeEach(function() {
       tm = new TaskMaker();
-    })
+    });
 
     it('should fail when task cannot be found', function() {
       var error = false;
