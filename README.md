@@ -11,6 +11,8 @@ When writing gulpfiles, I often found myself copying entire blocks of code betwe
 
 In other words, _gulpfiles are not DRY between projects_. This project solves this issue by moving common task functionality into a set of external tasks that can be re-used.
 
+gulp-helpers enables Gulp to work similar to the way Grunt works, it favors configuration over code.
+
 ## Usage
 I might have a task to process my less files. It is many lines tall and does a whole bunch of stuff. I've forgotten half of what it does (wtf is [plumber()](https://github.com/floatdrop/gulp-plumber))? It also necessitates adding devDependencies to my projects `package.json` and all the `require` lines at the top of the gulpfile. _What a mess_.
 
