@@ -1,6 +1,7 @@
 [![npm version](https://badge.fury.io/js/gulp-helpers.svg)](https://badge.fury.io/js/gulp-helpers)
 [![npm dependencies](https://david-dm.org/lookfirst/gulp-helpers.svg)](https://david-dm.org/lookfirst/gulp-helpers)
 [![Build Status](https://travis-ci.org/lookfirst/gulp-helpers.svg)](https://travis-ci.org/lookfirst/gulp-helpers)
+[![Gitter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/lookfirst/gulp-helpers)
 
 # gulp-helpers
 A set of tasks and helpers for gulp
