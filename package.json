@@ -4,7 +4,6 @@
   "description": "A set of tasks and helpers for gulp",
   "main": "dist/index.js",
   "license": "MIT",
-  "readme": "README.md",
   "homepage": "https://github.com/lookfirst/gulp-helpers",
   "author": {
     "name": "Jon Stevens",
