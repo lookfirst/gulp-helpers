@@ -7,7 +7,7 @@
 A set of tasks and helpers for gulp
 
 ## Reasoning
-When writing gulpfiles, I often found myself copying entire blocks of code between files. I would make mistakes and forget things. I would improve one gulpfile and have a hard time upgrading old gulpfiles in other projects. 
+When writing gulpfiles, I often find myself copying entire blocks of code between files. I make mistakes and forget things. I improve one gulpfile and have a hard time upgrading old gulpfiles in other projects. 
 
 In other words, _gulpfiles are not DRY between projects_. This project solves this issue by moving common task functionality into a set of external tasks that can be re-used.
 
