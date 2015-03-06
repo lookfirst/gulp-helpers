@@ -7,6 +7,7 @@ var browserSync = require('browser-sync');
 var coffee = require('gulp-coffee');
 var to5 = require('gulp-babel');
 var ngAnnotate = require('gulp-ng-annotate');
+var rename = require('gulp-rename');
 
 var compilerOptions = {
 	filename: '',
@@ -73,6 +74,11 @@ class ES6Task {
 			chain = chain.pipe(cache(options.taskName))
 				.pipe(plumber())
 				.pipe(changed(options.dest, {extension: options.changedExtension}))
+				.pipe(rename(function(path) {
+					if (path.extname == '.jsx') {
+						path.extname = '.js';
+					}
+				}))
 				.pipe(sourcemaps.init());
 
 			if (options.coffee) {
