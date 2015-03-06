@@ -7,7 +7,6 @@ var browserSync = require('browser-sync');
 var coffee = require('gulp-coffee');
 var to5 = require('gulp-babel');
 var ngAnnotate = require('gulp-ng-annotate');
-var react = require('gulp-react');
 
 var compilerOptions = {
 	filename: '',
@@ -31,11 +30,6 @@ var compilerOptions = {
 	}
 };
 
-var reactOptions = {
-	sourceMap: true,
-	harmony: true
-};
-
 class ES6Task {
 	setOptions(options) {
 		this.options = options;
@@ -50,10 +44,6 @@ class ES6Task {
 
 		if (!this.options.compilerOptions) {
 			this.options.compilerOptions = compilerOptions;
-		}
-
-		if (!this.options.reactOptions) {
-			this.options.reactOptions = {bare: true};
 		}
 
 		if (!this.options.coffeeOptions) {
@@ -84,10 +74,6 @@ class ES6Task {
 				.pipe(plumber())
 				.pipe(changed(options.dest, {extension: options.changedExtension}))
 				.pipe(sourcemaps.init());
-
-			if (options.react) {
-				chain = chain.pipe(react(options.reactOptions).on('error', gutil.log));
-			}
 
 			if (options.coffee) {
 				chain = chain.pipe(coffee(options.coffeeOptions).on('error', gutil.log));
