@@ -11,4 +11,16 @@ describe('index', () => {
 			expect(gulpHelpers.framework('run-sequence')).to.exist;
 		});
 	});
+
+	describe('#situation', () => {
+		it('exists', () => {
+			expect(gulpHelpers.situation).to.exist;
+		});
+	});
+
+	describe('#taskMaker', () => {
+		it('exists', () => {
+			expect(gulpHelpers.taskMaker).to.exist;
+		});
+	});
 });
