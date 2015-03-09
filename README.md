@@ -97,9 +97,13 @@ This makes it easy to build gulpfiles which can be deployed to PaaS solutions li
 
 ```
 var _ = gulpHelpers.framework('_');
+var runSequence = gulpHelpers.framework('run-sequence');
 ```
 
-The idea behind `framework` is that the dependency chain is in gulp-helpers instead of being in your own project's package.json. Right now, [lodash](https://lodash.com/) is the only framework available. Send a PR for others that might help you.
+The idea behind `framework` is that the dependency chain is in gulp-helpers instead of being in your own project's `package.json`. 
+
+* [lodash](https://lodash.com/)
+* [run-sequence](https://github.com/OverZealous/run-sequence)
 
 ## Development
 

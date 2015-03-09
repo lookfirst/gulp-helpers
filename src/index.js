@@ -2,6 +2,7 @@ import Situation from './Situation';
 import TaskMaker from './TaskMaker';
 
 import _ from 'lodash';
+import runSequence from 'run-sequence';
 
 class GulpHelpers {
 	constructor() {
@@ -9,6 +10,7 @@ class GulpHelpers {
 
 		this.frameworks = {};
 		this.frameworks._ = _;
+		this.frameworks['run-sequence'] = runSequence;
 	}
 
 	taskMaker(gulp) {

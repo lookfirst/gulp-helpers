@@ -6,5 +6,9 @@ describe('index', () => {
 		it('has _ (lodash)', () => {
 			expect(gulpHelpers.framework('_').merge).to.exist;
 		});
-	})
+
+		it('has runSequence', () => {
+			expect(gulpHelpers.framework('run-sequence')).to.exist;
+		});
+	});
 });
