@@ -93,6 +93,14 @@ Production mode generally means that the project is bundled and minified and [br
 
 This makes it easy to build gulpfiles which can be deployed to PaaS solutions like Heroku, yet still allow you to test your app in production mode locally.
 
+### framework
+
+```
+var _ = gulpHelpers.framework('_');
+```
+
+The idea behind `framework` is that the dependency chain is in gulp-helpers instead of being in your own project's package.json. Right now, [lodash](https://lodash.com/) is the only framework available. Send a PR for others that might help you.
+
 ## Development
 
 gulp-helpers is written in ES6 and transpiled to ES5 using [babel](https://babeljs.io/). This allows us to take advantage of ES6 features while maintaining backwards compatibility. In my research, it seems like this is one of the first public [NPM projects](https://www.npmjs.com/package/gulp-helpers) to do this. Fun!

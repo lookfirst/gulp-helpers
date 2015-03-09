@@ -1,6 +1,6 @@
 {
   "name": "gulp-helpers",
-  "version": "1.1.16",
+  "version": "1.2.0",
   "description": "A set of tasks and helpers for gulp",
   "main": "dist/index.js",
   "license": "MIT",
@@ -17,7 +17,7 @@
     "url": "https://github.com/lookfirst/gulp-helpers/issues"
   },
   "scripts": {
-    "test": "mocha --compilers js:babel/register",
+    "test": "npm run-script compile && mocha --compilers js:babel/register",
     "compile": "babel src --out-dir dist",
     "prepublish": "babel src --out-dir dist"
   },
@@ -60,6 +60,7 @@
     "karma-phantomjs-launcher": "^0.1.4",
     "karma-verbose-reporter": "0.0.2",
     "less-plugin-clean-css": "^1.5.0",
+    "lodash": "^3.5.0",
     "systemjs-route-bundler": "^1.0.6",
     "vinyl-paths": "^1.0.0"
   }

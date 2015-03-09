@@ -1,9 +1,14 @@
 import Situation from './Situation';
 import TaskMaker from './TaskMaker';
 
+import _ from 'lodash';
+
 class GulpHelpers {
 	constructor() {
 		this.sit = new Situation();
+
+		this.frameworks = {};
+		this.frameworks._ = _;
 	}
 
 	taskMaker(gulp) {
@@ -15,6 +20,10 @@ class GulpHelpers {
 
 	situation() {
 		return this.sit;
+	}
+
+	framework(name) {
+		return this.frameworks[name];
 	}
 }
 
