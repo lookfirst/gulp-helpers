@@ -22,12 +22,12 @@
     "prepublish": "babel src --out-dir dist"
   },
   "devDependencies": {
-    "babel": "^4.6.1",
+    "babel": "^4.7.3",
     "chai": "*",
     "mocha": "*"
   },
   "dependencies": {
-    "browser-sync": "^2.2.1",
+    "browser-sync": "^2.2.3",
     "connect-history-api-fallback": "^0.0.5",
     "del": "^1.1.1",
     "gulp": "^3.8.11",
@@ -35,7 +35,7 @@
     "gulp-cached": "^1.0.2",
     "gulp-changed": "^1.1.1",
     "gulp-coffee": "^2.3.1",
-    "gulp-eslint": "^0.5.0",
+    "gulp-eslint": "^0.6.0",
     "gulp-insert": "^0.4.0",
     "gulp-jshint": "^1.9.2",
     "gulp-less": "^3.0.1",
@@ -58,7 +58,7 @@
     "karma-jasmine-html-reporter": "^0.1.6",
     "karma-jspm": "^1.1.4",
     "karma-phantomjs-launcher": "^0.1.4",
-    "karma-verbose-reporter": "0.0.1",
+    "karma-verbose-reporter": "0.0.2",
     "less-plugin-clean-css": "^1.5.0",
     "systemjs-route-bundler": "^1.0.6",
     "vinyl-paths": "^1.0.0"
