@@ -51,13 +51,6 @@ class ES6Task {
 			this.options.coffeeOptions = {bare: true};
 		}
 
-		if (!this.options.changedExtension) {
-			this.options.changedExtension = '.js';
-			if (this.options.coffee) {
-				this.options.changedExtension = '.coffee';
-			}
-		}
-
 		if (!this.options.ngAnnotateOptions) {
 			this.options.ngAnnotateOptions = {sourceMap: true};
 		}
@@ -73,7 +66,7 @@ class ES6Task {
 
 			chain = chain.pipe(cache(options.taskName))
 				.pipe(plumber())
-				.pipe(changed(options.dest, {extension: options.changedExtension}))
+				.pipe(changed(options.dest, {extension: '.js'}))
 				.pipe(rename(function(path) {
 					if (path.extname == '.jsx') {
 						path.extname = '.js';
@@ -85,7 +78,7 @@ class ES6Task {
 				chain = chain.pipe(coffee(options.coffeeOptions).on('error', gutil.log));
 			}
 
-			chain = chain.pipe(to5(options.compilerOptions))
+			chain = chain.pipe(to5(options.compilerOptions));
 
 			if (options.ngAnnotate) {
 				chain = chain.pipe(ngAnnotate(options.ngAnnotateOptions));

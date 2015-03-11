@@ -28,7 +28,7 @@ class LessTask {
 			return gulp.src(options.src)
 				.pipe(cache(options.taskName))
 				.pipe(plumber())
-				.pipe(changed(options.dest, {extension: '.less'}))
+				.pipe(changed(options.src, {extension: '.css'}))
 				.pipe(sourcemaps.init())
 				.pipe(less({plugins: [cleancss]}))
 				.pipe(sourcemaps.write('.'))

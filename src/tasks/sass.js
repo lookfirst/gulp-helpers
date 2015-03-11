@@ -17,13 +17,6 @@ class SassTask {
 			throw new Error('SassTask: dest is missing from configuration!');
 		}
 
-		this.options.extension = '.scss';
-		if (this.options.config) {
-			if (this.options.config.indentedSyntax) {
-				this.options.extension = '.sass';
-			}
-		}
-
 		return this;
 	}
 
@@ -33,7 +26,7 @@ class SassTask {
 			return gulp.src(options.src)
 				.pipe(cache(options.taskName))
 				.pipe(plumber())
-				.pipe(changed(options.dest, {extension: options.extension}))
+				.pipe(changed(options.src, {extension: '.css'}))
 				.pipe(sourcemaps.init())
 				.pipe(sass(options.config))
 				.pipe(sourcemaps.write('.'))
