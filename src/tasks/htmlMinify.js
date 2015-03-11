@@ -1,4 +1,5 @@
 var htmlMin = require('gulp-minify-html');
+var plumber = require('gulp-plumber');
 
 class HtmlMinifyTask {
 	setOptions(options) {
@@ -27,6 +28,7 @@ class HtmlMinifyTask {
 		let options = this.options;
 		gulp.task(options.taskName, options.taskDeps, function() {
 			return gulp.src(options.src)
+				.pipe(plumber())
 				.pipe(htmlMin(options.minimize))
 				.pipe(gulp.dest(options.dest))
 		});
