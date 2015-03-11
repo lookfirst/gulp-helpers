@@ -26,7 +26,7 @@ class SassTask {
 			return gulp.src(options.src)
 				.pipe(cache(options.taskName))
 				.pipe(plumber())
-				.pipe(changed(options.src, {extension: '.css'}))
+				.pipe(changed(options.dest, {extension: '.css'}))
 				.pipe(sourcemaps.init())
 				.pipe(sass(options.config))
 				.pipe(sourcemaps.write('.'))
