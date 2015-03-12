@@ -51,7 +51,7 @@
     "gulp-util": "~3.0.4",
     "jshint-stylish": "^1.0.1",
     "karma": "^0.12.31",
-    "karma-babel-preprocessor": "^4.0.0",
+    "karma-babel-preprocessor": "^4.0.1",
     "karma-chrome-launcher": "^0.1.7",
     "karma-coverage": "^0.2.7",
     "karma-jasmine": "^0.3.5",
