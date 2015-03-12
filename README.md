@@ -31,7 +31,7 @@ gulp.task('less', function () {
   return gulp.src(path.less)
     .pipe(cache('less'))
     .pipe(plumber())
-    .pipe(changed(path.output, {extension: '.less'}))
+    .pipe(changed(path.output, {extension: '.css'}))
     .pipe(sourcemaps.init())
     .pipe(less({
       plugins: [ cleancss ]
