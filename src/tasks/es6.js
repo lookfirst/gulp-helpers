@@ -8,6 +8,7 @@ var coffee = require('gulp-coffee');
 var to5 = require('gulp-babel');
 var ngAnnotate = require('gulp-ng-annotate');
 var rename = require('gulp-rename');
+var _ = require('lodash');
 
 var compilerOptions = {
 	filename: '',
@@ -43,9 +44,7 @@ class ES6Task {
 			throw new Error('ES6Task: dest is missing from configuration!');
 		}
 
-		if (!this.options.compilerOptions) {
-			this.options.compilerOptions = compilerOptions;
-		}
+		this.options.compilerOptions = _.merge(compilerOptions, this.options.compilerOptions);
 
 		if (!this.options.coffeeOptions) {
 			this.options.coffeeOptions = {bare: true};
