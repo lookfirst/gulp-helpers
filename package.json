@@ -1,6 +1,6 @@
 {
   "name": "gulp-helpers",
-  "version": "1.2.7",
+  "version": "1.2.8",
   "description": "A set of tasks and helpers for gulp",
   "main": "dist/index.js",
   "license": "MIT",
@@ -18,8 +18,8 @@
   },
   "scripts": {
     "test": "npm run-script compile && mocha --compilers js:babel/register",
-    "compile": "babel src --out-dir dist",
-    "prepublish": "babel src --out-dir dist"
+    "compile": "babel src --out-dir dist --optional runtime",
+    "prepublish": "npm run-script compile"
   },
   "devDependencies": {
     "babel": "^4.7.16",
