@@ -21,4 +21,4 @@ class CleanTask {
 	}
 }
 
-module.exports = new CleanTask();
+module.exports = CleanTask;

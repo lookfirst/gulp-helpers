@@ -40,4 +40,4 @@ class LessTask {
 	}
 }
 
-module.exports = new LessTask();
+module.exports = LessTask;

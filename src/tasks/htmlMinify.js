@@ -34,4 +34,4 @@ class HtmlMinifyTask {
 	}
 }
 
-module.exports = new HtmlMinifyTask();
+module.exports = HtmlMinifyTask;

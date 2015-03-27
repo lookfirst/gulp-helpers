@@ -29,4 +29,4 @@ class BrowserSyncTask {
 	}
 }
 
-module.exports = new BrowserSyncTask();
+module.exports = BrowserSyncTask;

@@ -54,4 +54,4 @@ class NgHtml2JsTask {
 	}
 }
 
-module.exports = new NgHtml2JsTask();
+module.exports = NgHtml2JsTask;

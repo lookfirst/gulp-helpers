@@ -20,4 +20,4 @@ class RouteBundlerTask {
 	}
 }
 
-module.exports = new RouteBundlerTask();
+module.exports = RouteBundlerTask;

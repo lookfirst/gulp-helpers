@@ -48,4 +48,4 @@ class CopyTask {
 	}
 }
 
-module.exports = new CopyTask();
+module.exports = CopyTask;

@@ -87,5 +87,5 @@ class BabelTask {
 	}
 }
 
-module.exports = new BabelTask();
+module.exports = BabelTask;
 module.exports.compilerOptions = compilerOptions;

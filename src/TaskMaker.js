@@ -16,7 +16,8 @@ class TaskMaker {
 		}
 
 		try {
-			return require('./tasks/' + name + '.js').setOptions(options).defineTask(this.gulp);
+			let taskClass = require('./tasks/' + name + '.js');
+			new taskClass().setOptions(options).defineTask(this.gulp);
 		} catch (e) {
 			gutil.log(gutil.colors.red(e));
 			throw e;

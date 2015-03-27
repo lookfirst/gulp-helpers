@@ -27,4 +27,4 @@ class WatchTask {
 	}
 }
 
-module.exports = new WatchTask();
+module.exports = WatchTask;

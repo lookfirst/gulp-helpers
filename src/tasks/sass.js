@@ -37,4 +37,4 @@ class SassTask {
 	}
 }
 
-module.exports = new SassTask();
+module.exports = SassTask;

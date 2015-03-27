@@ -23,4 +23,4 @@ class JshintTask {
 	}
 }
 
-module.exports = new JshintTask();
+module.exports = JshintTask;

@@ -22,4 +22,4 @@ class KarmaTask {
 	}
 }
 
-module.exports = new KarmaTask();
+module.exports = KarmaTask;

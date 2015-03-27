@@ -22,4 +22,4 @@ class EslintTask {
 	}
 }
 
-module.exports = new EslintTask();
+module.exports = EslintTask;

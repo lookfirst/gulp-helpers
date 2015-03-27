@@ -31,4 +31,4 @@ class MinifyTask {
 	}
 }
 
-module.exports = new MinifyTask();
+module.exports = MinifyTask;
