@@ -16,7 +16,7 @@ class KarmaTask {
 		let options = this.options;
 		gulp.task(options.taskName, options.taskDeps, () => {
 			new Promise((resolve) =>
-				karma.start({configFile: options.configFile}, resolve)
+				server.start({configFile: options.configFile}, resolve)
 			);
 		});
 	}
