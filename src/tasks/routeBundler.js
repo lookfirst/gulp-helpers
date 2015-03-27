@@ -1,10 +1,11 @@
-var routeBundler = require('systemjs-route-bundler');
+import routeBundler from 'systemjs-route-bundler';
+import _ from 'lodash';
 
 class RouteBundlerTask {
 	setOptions(options) {
 		this.options = options;
 
-		if (!this.options.config) {
+		if (_.isUndefined(this.options.config)) {
 			throw new Error('RouteBundlerTask: Config is missing from configuration!');
 		}
 
@@ -13,7 +14,7 @@ class RouteBundlerTask {
 
 	defineTask(gulp) {
 		let options = this.options;
-		gulp.task(options.taskName, options.taskDeps, function() {
+		gulp.task(options.taskName, options.taskDeps, () => {
 			return routeBundler.build(options.config)
 		});
 	}

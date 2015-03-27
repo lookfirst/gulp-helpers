@@ -1,16 +1,17 @@
-var sourcemaps = require('gulp-sourcemaps');
-var uglify = require('gulp-uglify');
-var plumber = require('gulp-plumber');
+import sourcemaps from 'gulp-sourcemaps';
+import uglify from 'gulp-uglify';
+import plumber from 'gulp-plumber';
+import _ from 'lodash';
 
 class MinifyTask {
 	setOptions(options) {
 		this.options = options;
 
-		if (!this.options.src) {
+		if (_.isUndefined(this.options.src)) {
 			throw new Error('MinifyTask: src is missing from configuration!');
 		}
 
-		if (!this.options.dest) {
+		if (_.isUndefined(this.options.dest)) {
 			throw new Error('MinifyTask: dest is missing from configuration!');
 		}
 
@@ -19,7 +20,7 @@ class MinifyTask {
 
 	defineTask(gulp) {
 		let options = this.options;
-		gulp.task(options.taskName, options.taskDeps, function() {
+		gulp.task(options.taskName, options.taskDeps, () => {
 			return gulp.src(options.src)
 				.pipe(plumber())
 				.pipe(sourcemaps.init({loadMaps: true}))

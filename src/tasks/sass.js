@@ -1,19 +1,20 @@
-var plumber = require('gulp-plumber');
-var sass = require('gulp-sass');
-var cache = require('gulp-cached');
-var changed = require('gulp-changed');
-var sourcemaps = require('gulp-sourcemaps');
-var browserSync = require('browser-sync');
+import plumber from 'gulp-plumber';
+import sass from 'gulp-sass';
+import cache from 'gulp-cached';
+import changed from 'gulp-changed';
+import sourcemaps from 'gulp-sourcemaps';
+import browserSync from 'browser-sync';
+import _ from 'lodash';
 
 class SassTask {
 	setOptions(options) {
 		this.options = options;
 
-		if (!this.options.src) {
+		if (_.isUndefined(this.options.src)) {
 			throw new Error('SassTask: src is missing from configuration!');
 		}
 
-		if (!this.options.dest) {
+		if (_.isUndefined(this.options.dest)) {
 			throw new Error('SassTask: dest is missing from configuration!');
 		}
 
@@ -22,7 +23,7 @@ class SassTask {
 
 	defineTask(gulp) {
 		let options = this.options;
-		gulp.task(options.taskName, options.taskDeps, function() {
+		gulp.task(options.taskName, options.taskDeps, () => {
 			return gulp.src(options.src)
 				.pipe(cache(options.taskName))
 				.pipe(plumber())

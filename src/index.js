@@ -14,6 +14,8 @@ class GulpHelpers {
 	}
 
 	taskMaker(gulp) {
+		runSequence.use(gulp);
+
 		if (!this.tm) {
 			this.tm = new TaskMaker(gulp);
 		}

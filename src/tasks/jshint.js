@@ -1,11 +1,12 @@
-var jshint = require('gulp-jshint');
-var stylish = require('jshint-stylish');
+import jshint  from 'gulp-jshint';
+import stylish from 'jshint-stylish';
+import _ from 'lodash';
 
 class JshintTask {
 	setOptions(options) {
 		this.options = options;
 
-		if (!this.options.src) {
+		if (_.isUndefined(this.options.src)) {
 			throw new Error('JshintTask: src is missing from configuration!');
 		}
 
@@ -14,7 +15,7 @@ class JshintTask {
 
 	defineTask(gulp) {
 		let options = this.options;
-		gulp.task(options.taskName, options.taskDeps, function() {
+		gulp.task(options.taskName, options.taskDeps, () => {
 			return gulp.src(options.src)
 				.pipe(jshint())
 				.pipe(jshint.reporter(stylish))

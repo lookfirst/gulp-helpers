@@ -1,48 +1,45 @@
-var plumber = require('gulp-plumber');
-var cache = require('gulp-cached');
-var changed = require('gulp-changed');
-var browserSync = require('browser-sync');
-var to5 = require('gulp-babel');
-var htmlMin = require('gulp-minify-html');
-var ngHtml2Js = require('gulp-ng-html2js');
-var insert = require('gulp-insert');
+import plumber from 'gulp-plumber';
+import cache from 'gulp-cached';
+import changed from 'gulp-changed';
+import browserSync from 'browser-sync';
+import to5 from 'gulp-babel';
+import htmlMin from 'gulp-minify-html';
+import ngHtml2Js from 'gulp-ng-html2js';
+import insert from 'gulp-insert';
+import _ from 'lodash';
 
-var es6 = require('./es6');
+import babel from './babel';
 
 class NgHtml2JsTask {
 	setOptions(options) {
 		this.options = options;
 
-		if (!this.options.src) {
+		if (_.isUndefined(this.options.src)) {
 			throw new Error('NgHtml2JsTask: src is missing from configuration!');
 		}
 
-		if (!this.options.dest) {
+		if (_.isUndefined(this.options.dest)) {
 			throw new Error('NgHtml2JsTask: dest is missing from configuration!');
 		}
 
-		if (!this.options.prepend) {
+		if (_.isUndefined(this.options.prepend)) {
 			this.options.prepend = "import angular from 'angular';\n";
 		}
 
-		if (!this.options.compilerOptions) {
-			this.options.compilerOptions = es6.compilerOptions;
-		}
+		this.options.compilerOptions = _.merge(babel.compilerOptions, this.options.compilerOptions);
 
-		if (!this.options.minimize) {
-			this.options.minimize = {
-				empty: true,
-				spare: true,
-				quotes: true
-			};
-		}
+		this.options.minimize = _.merge({
+			empty: true,
+			spare: true,
+			quotes: true
+		}, this.options.minimize);
 
 		return this;
 	}
 
 	defineTask(gulp) {
 		let options = this.options;
-		gulp.task(options.taskName, options.taskDeps, function() {
+		gulp.task(options.taskName, options.taskDeps, () => {
 			return gulp.src(options.src)
 				.pipe(cache(options.taskName))
 				.pipe(plumber())

@@ -1,21 +1,23 @@
-var plumber = require('gulp-plumber');
-var less = require('gulp-less');
-var cache = require('gulp-cached');
-var changed = require('gulp-changed');
-var sourcemaps = require('gulp-sourcemaps');
-var lessPluginCleanCSS = require('less-plugin-clean-css');
-var cleancss = new lessPluginCleanCSS({advanced: true});
-var browserSync = require('browser-sync');
+import _ from 'lodash';
+import plumber from 'gulp-plumber';
+import less from 'gulp-less';
+import cache from 'gulp-cached';
+import changed from 'gulp-changed';
+import sourcemaps from 'gulp-sourcemaps';
+import browserSync from 'browser-sync';
+import lessPluginCleanCSS from 'less-plugin-clean-css';
+
+let cleancss = new lessPluginCleanCSS({advanced: true});
 
 class LessTask {
 	setOptions(options) {
 		this.options = options;
 
-		if (!this.options.src) {
+		if (_.isUndefined(this.options.src)) {
 			throw new Error('LessTask: src is missing from configuration!');
 		}
 
-		if (!this.options.dest) {
+		if (_.isUndefined(this.options.dest)) {
 			throw new Error('LessTask: dest is missing from configuration!');
 		}
 
@@ -24,7 +26,7 @@ class LessTask {
 
 	defineTask(gulp) {
 		let options = this.options;
-		gulp.task(options.taskName, options.taskDeps, function() {
+		gulp.task(options.taskName, options.taskDeps, () => {
 			return gulp.src(options.src)
 				.pipe(cache(options.taskName))
 				.pipe(plumber())

@@ -1,10 +1,11 @@
-var karma = require('karma').server;
+import {server} from 'karma';
+import _ from 'lodash';
 
 class KarmaTask {
 	setOptions(options) {
 		this.options = options;
 
-		if (!this.options.configFile) {
+		if (_.isUndefined(this.options.configFile)) {
 			throw new Error('KarmaTask: configFile is missing from configuration!');
 		}
 
@@ -13,7 +14,7 @@ class KarmaTask {
 
 	defineTask(gulp) {
 		let options = this.options;
-		gulp.task(options.taskName, options.taskDeps, function() {
+		gulp.task(options.taskName, options.taskDeps, () => {
 			new Promise((resolve) =>
 				karma.start({configFile: options.configFile}, resolve)
 			);
