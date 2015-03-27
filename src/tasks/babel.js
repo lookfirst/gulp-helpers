@@ -10,7 +10,7 @@ import ngAnnotate from 'gulp-ng-annotate';
 import rename from 'gulp-rename';
 import _ from 'lodash';
 
-let compilerOptions = {
+let defaultCompilerOptions = {
 	filename: '',
 	filenameRelative: '',
 	blacklist: [],
@@ -45,7 +45,7 @@ class BabelTask {
 		}
 
 		// Handle defaults
-		this.options.compilerOptions = _.merge(compilerOptions, this.options.compilerOptions);
+		this.options.compilerOptions = _.merge({}, defaultCompilerOptions, this.options.compilerOptions);
 		this.options.coffeeOptions = _.merge({bare: true}, this.options.coffeeOptions);
 		this.options.ngAnnotateOptions = _.merge({sourceMap: true}, this.options.ngAnnotateOptions);
 
@@ -88,4 +88,4 @@ class BabelTask {
 }
 
 module.exports = BabelTask;
-module.exports.compilerOptions = compilerOptions;
+module.exports.compilerOptions = defaultCompilerOptions;
