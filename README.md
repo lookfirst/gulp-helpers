@@ -96,7 +96,7 @@ This makes it easy to build gulpfiles which can be deployed to PaaS solutions li
 ### framework
 
 ```
-var _ = gulpHelpers.framework('_');
+var _ = gulpHelpers.framework('lodash'); // '_' also works
 var runSequence = gulpHelpers.framework('run-sequence');
 ```
 

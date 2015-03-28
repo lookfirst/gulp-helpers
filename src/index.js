@@ -10,6 +10,7 @@ class GulpHelpers {
 
 		this.frameworks = {};
 		this.frameworks._ = _;
+		this.frameworks['lodash'] = _;
 		this.frameworks['run-sequence'] = runSequence;
 	}
 
