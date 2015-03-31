@@ -23,6 +23,7 @@
   },
   "devDependencies": {
     "chai": "*",
+    "gulp": "^3.8.11",
     "mocha": "*"
   },
   "dependencies": {
