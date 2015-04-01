@@ -23,7 +23,7 @@ class BrowserSyncTask {
 	defineTask(gulp) {
 		let options = this.options;
 		gulp.task(options.taskName, options.taskDeps, () => {
-			new Promise((resolve) => {
+			return new Promise((resolve) => {
 				browserSync(options.config, resolve);
 			})
 		});
