@@ -1,20 +1,21 @@
 import htmlMin from 'gulp-minify-html';
 import plumber from 'gulp-plumber';
-import _ from 'lodash';
+import _isUndefined from 'lodash/lang/isUndefined';
+import _merge from 'lodash/object/merge';
 
 class HtmlMinifyTask {
 	setOptions(options) {
 		this.options = options;
 
-		if (_.isUndefined(this.options.src)) {
+		if (_isUndefined(this.options.src)) {
 			throw new Error('HtmlMinifyTask: src is missing from configuration!');
 		}
 
-		if (_.isUndefined(this.options.dest)) {
+		if (_isUndefined(this.options.dest)) {
 			throw new Error('HtmlMinifyTask: dest is missing from configuration!');
 		}
 
-		this.options.minimize = _.merge({
+		this.options.minimize = _merge({
 			empty: true,
 			spare: true,
 			quotes: true

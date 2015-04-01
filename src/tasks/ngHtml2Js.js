@@ -6,7 +6,8 @@ import to5 from 'gulp-babel';
 import htmlMin from 'gulp-minify-html';
 import ngHtml2Js from 'gulp-ng-html2js';
 import insert from 'gulp-insert';
-import _ from 'lodash';
+import _isUndefined from 'lodash/lang/isUndefined';
+import _merge from 'lodash/object/merge';
 
 import babel from './babel';
 
@@ -14,21 +15,21 @@ class NgHtml2JsTask {
 	setOptions(options) {
 		this.options = options;
 
-		if (_.isUndefined(this.options.src)) {
+		if (_isUndefined(this.options.src)) {
 			throw new Error('NgHtml2JsTask: src is missing from configuration!');
 		}
 
-		if (_.isUndefined(this.options.dest)) {
+		if (_isUndefined(this.options.dest)) {
 			throw new Error('NgHtml2JsTask: dest is missing from configuration!');
 		}
 
-		if (_.isUndefined(this.options.prepend)) {
+		if (_isUndefined(this.options.prepend)) {
 			this.options.prepend = "import angular from 'angular';\n";
 		}
 
-		this.options.compilerOptions = _.merge({}, babel.compilerOptions, this.options.compilerOptions);
+		this.options.compilerOptions = _merge({}, babel.compilerOptions, this.options.compilerOptions);
 
-		this.options.minimize = _.merge({
+		this.options.minimize = _merge({
 			empty: true,
 			spare: true,
 			quotes: true

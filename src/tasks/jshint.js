@@ -1,12 +1,12 @@
 import jshint  from 'gulp-jshint';
 import stylish from 'jshint-stylish';
-import _ from 'lodash';
+import _isUndefined from 'lodash/lang/isUndefined';
 
 class JshintTask {
 	setOptions(options) {
 		this.options = options;
 
-		if (_.isUndefined(this.options.src)) {
+		if (_isUndefined(this.options.src)) {
 			throw new Error('JshintTask: src is missing from configuration!');
 		}
 

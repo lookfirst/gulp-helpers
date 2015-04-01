@@ -4,17 +4,17 @@ import browserSync from 'browser-sync';
 import changed from 'gulp-changed';
 import rename from 'gulp-rename';
 import replace from 'gulp-replace-task';
-import _ from 'lodash';
+import _isUndefined from 'lodash/lang/isUndefined';
 
 class CopyTask {
 	setOptions(options) {
 		this.options = options;
 
-		if (_.isUndefined(this.options.src)) {
+		if (_isUndefined(this.options.src)) {
 			throw new Error('CopyTask: src is missing from configuration!');
 		}
 
-		if (_.isUndefined(this.options.dest)) {
+		if (_isUndefined(this.options.dest)) {
 			throw new Error('CopyTask: dest is missing from configuration!');
 		}
 

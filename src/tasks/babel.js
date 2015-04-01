@@ -8,7 +8,8 @@ import coffee from 'gulp-coffee';
 import to5 from 'gulp-babel';
 import ngAnnotate from 'gulp-ng-annotate';
 import rename from 'gulp-rename';
-import _ from 'lodash';
+import _isUndefined from 'lodash/lang/isUndefined';
+import _merge from 'lodash/object/merge';
 
 let defaultCompilerOptions = {
 	filename: '',
@@ -36,18 +37,18 @@ class BabelTask {
 	setOptions(options) {
 		this.options = options;
 
-		if (_.isUndefined(this.options.src)) {
+		if (_isUndefined(this.options.src)) {
 			throw new Error('BabelTask: src is missing from configuration!');
 		}
 
-		if (_.isUndefined(this.options.dest)) {
+		if (_isUndefined(this.options.dest)) {
 			throw new Error('BabelTask: dest is missing from configuration!');
 		}
 
 		// Handle defaults
-		this.options.compilerOptions = _.merge({}, defaultCompilerOptions, this.options.compilerOptions);
-		this.options.coffeeOptions = _.merge({bare: true}, this.options.coffeeOptions);
-		this.options.ngAnnotateOptions = _.merge({sourceMap: true}, this.options.ngAnnotateOptions);
+		this.options.compilerOptions = _merge({}, defaultCompilerOptions, this.options.compilerOptions);
+		this.options.coffeeOptions = _merge({bare: true}, this.options.coffeeOptions);
+		this.options.ngAnnotateOptions = _merge({sourceMap: true}, this.options.ngAnnotateOptions);
 
 		return this;
 	}

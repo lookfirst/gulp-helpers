@@ -1,17 +1,17 @@
 import sourcemaps from 'gulp-sourcemaps';
 import uglify from 'gulp-uglify';
 import plumber from 'gulp-plumber';
-import _ from 'lodash';
+import _isUndefined from 'lodash/lang/isUndefined';
 
 class MinifyTask {
 	setOptions(options) {
 		this.options = options;
 
-		if (_.isUndefined(this.options.src)) {
+		if (_isUndefined(this.options.src)) {
 			throw new Error('MinifyTask: src is missing from configuration!');
 		}
 
-		if (_.isUndefined(this.options.dest)) {
+		if (_isUndefined(this.options.dest)) {
 			throw new Error('MinifyTask: dest is missing from configuration!');
 		}
 

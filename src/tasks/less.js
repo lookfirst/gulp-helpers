@@ -1,4 +1,4 @@
-import _ from 'lodash';
+import _isUndefined from 'lodash/lang/isUndefined';
 import plumber from 'gulp-plumber';
 import less from 'gulp-less';
 import cache from 'gulp-cached';
@@ -13,11 +13,11 @@ class LessTask {
 	setOptions(options) {
 		this.options = options;
 
-		if (_.isUndefined(this.options.src)) {
+		if (_isUndefined(this.options.src)) {
 			throw new Error('LessTask: src is missing from configuration!');
 		}
 
-		if (_.isUndefined(this.options.dest)) {
+		if (_isUndefined(this.options.dest)) {
 			throw new Error('LessTask: dest is missing from configuration!');
 		}
 

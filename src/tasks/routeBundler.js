@@ -1,11 +1,11 @@
 import routeBundler from 'systemjs-route-bundler';
-import _ from 'lodash';
+import _isUndefined from 'lodash/lang/isUndefined';
 
 class RouteBundlerTask {
 	setOptions(options) {
 		this.options = options;
 
-		if (_.isUndefined(this.options.config)) {
+		if (_isUndefined(this.options.config)) {
 			throw new Error('RouteBundlerTask: Config is missing from configuration!');
 		}
 

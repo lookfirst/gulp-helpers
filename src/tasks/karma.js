@@ -1,11 +1,11 @@
 import {server} from 'karma';
-import _ from 'lodash';
+import _isUndefined from 'lodash/lang/isUndefined';
 
 class KarmaTask {
 	setOptions(options) {
 		this.options = options;
 
-		if (_.isUndefined(this.options.configFile)) {
+		if (_isUndefined(this.options.configFile)) {
 			throw new Error('KarmaTask: configFile is missing from configuration!');
 		}
 

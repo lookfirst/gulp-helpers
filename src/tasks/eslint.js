@@ -1,11 +1,11 @@
 import eslint from 'gulp-eslint';
-import _ from 'lodash';
+import _isUndefined from 'lodash/lang/isUndefined';
 
 class EslintTask {
 	setOptions(options) {
 		this.options = options;
 
-		if (_.isUndefined(this.options.src)) {
+		if (_isUndefined(this.options.src)) {
 			throw new Error('EslintTask: src is missing from configuration!');
 		}
 

@@ -1,15 +1,15 @@
 import gutil from 'gulp-util';
-import _ from 'lodash';
+import _isUndefined from 'lodash/lang/isUndefined';
 
 class WatchTask {
 	setOptions(options) {
 		this.options = options;
 
-		if (_.isUndefined(this.options.src)) {
+		if (_isUndefined(this.options.src)) {
 			throw new Error('WatchTask: src is missing from configuration!');
 		}
 
-		if (_.isUndefined(this.options.tasks)) {
+		if (_isUndefined(this.options.tasks)) {
 			throw new Error('WatchTask: Tasks is missing from configuration!');
 		}
 

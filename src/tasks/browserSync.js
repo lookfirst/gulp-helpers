@@ -1,4 +1,5 @@
-import _ from 'lodash';
+import _isUndefined from 'lodash/lang/isUndefined';
+import _merge from 'lodash/object/merge';
 import browserSync from 'browser-sync';
 import historyApiFallback from 'connect-history-api-fallback';
 
@@ -6,13 +7,13 @@ class BrowserSyncTask {
 	setOptions(options) {
 		this.options = options;
 
-		if (_.isUndefined(this.options.config)) {
+		if (_isUndefined(this.options.config)) {
 			throw new Error('BrowserSyncTask: config is missing from configuration!');
 		}
 
-		if (!_.isUndefined(this.options.historyApiFallback)) {
-			this.options.config.server = _.merge({}, this.options.config.server);
-			this.options.config.server.middleware = _.merge([], this.options.config.server.middleware);
+		if (!_isUndefined(this.options.historyApiFallback)) {
+			this.options.config.server = _merge({}, this.options.config.server);
+			this.options.config.server.middleware = _merge([], this.options.config.server.middleware);
 			this.options.config.server.middleware.push(historyApiFallback);
 		}
 

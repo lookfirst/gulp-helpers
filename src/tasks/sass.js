@@ -4,17 +4,17 @@ import cache from 'gulp-cached';
 import changed from 'gulp-changed';
 import sourcemaps from 'gulp-sourcemaps';
 import browserSync from 'browser-sync';
-import _ from 'lodash';
+import _isUndefined from 'lodash/lang/isUndefined';
 
 class SassTask {
 	setOptions(options) {
 		this.options = options;
 
-		if (_.isUndefined(this.options.src)) {
+		if (_isUndefined(this.options.src)) {
 			throw new Error('SassTask: src is missing from configuration!');
 		}
 
-		if (_.isUndefined(this.options.dest)) {
+		if (_isUndefined(this.options.dest)) {
 			throw new Error('SassTask: dest is missing from configuration!');
 		}
 

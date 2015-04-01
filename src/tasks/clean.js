@@ -1,12 +1,12 @@
 import vinylPaths from 'vinyl-paths';
 import del from 'del';
-import _ from 'lodash';
+import _isUndefined from 'lodash/lang/isUndefined';
 
 class CleanTask {
 	setOptions(options) {
 		this.options = options;
 
-		if (_.isUndefined(this.options.src)) {
+		if (_isUndefined(this.options.src)) {
 			throw new Error('CleanTask: src is missing from configuration!');
 		}
 

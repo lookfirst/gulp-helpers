@@ -1,22 +1,11 @@
+import _isUndefined from 'lodash/lang/isUndefined';
+
 import Situation from './Situation';
 import TaskMaker from './TaskMaker';
 
-import _ from 'lodash';
-import runSequence from 'run-sequence';
-
 class GulpHelpers {
-	constructor() {
-		this.sit = new Situation();
-
-		this.frameworks = {};
-		this.frameworks._ = _;
-		this.frameworks['lodash'] = _;
-		this.frameworks['run-sequence'] = runSequence;
-	}
 
 	taskMaker(gulp) {
-		runSequence.use(gulp);
-
 		if (!this.tm) {
 			this.tm = new TaskMaker(gulp);
 		}
@@ -24,10 +13,24 @@ class GulpHelpers {
 	}
 
 	situation() {
+		if (_isUndefined(this.sit)) {
+			this.sit = new Situation();
+		}
 		return this.sit;
 	}
 
 	framework(name) {
+		if (_isUndefined(this.frameworks)) {
+			this.frameworks = {};
+		}
+
+		if (_isUndefined(this.frameworks[name])) {
+			if (name === 'lodash' || name === '_') {
+				this.frameworks[name] = require('lodash');
+			} else if (name === 'run-sequence') {
+				this.frameworks[name] = require('run-sequence');
+			}
+		}
 		return this.frameworks[name];
 	}
 }
