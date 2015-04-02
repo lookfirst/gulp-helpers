@@ -12,24 +12,9 @@ import _isUndefined from 'lodash/lang/isUndefined';
 import _merge from 'lodash/object/merge';
 
 let defaultCompilerOptions = {
-	filename: '',
-	filenameRelative: '',
-	blacklist: [],
-	whitelist: [],
-	sourceRoot: '',
-	moduleRoot: '',
-	moduleIds: false,
 	externalHelpers: true,
-	format: {
-		comments: false,
-		compact: false,
-		indent: {
-			parentheses: true,
-			adjustMultilineComment: true,
-			style: '  ',
-			base: 0
-		}
-	}
+	comments: false,
+	compact: false
 };
 
 class BabelTask {
