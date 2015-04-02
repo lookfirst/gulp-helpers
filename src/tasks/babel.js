@@ -20,7 +20,6 @@ let defaultCompilerOptions = {
 	moduleRoot: '',
 	moduleIds: false,
 	externalHelpers: true,
-	experimental: false,
 	format: {
 		comments: false,
 		compact: false,
