@@ -27,6 +27,7 @@ class NgHtml2JsTask {
 			this.options.prepend = "import angular from 'angular';\n";
 		}
 
+		this.options.ngHtml2Js = _merge({}, {export: 'system'}, this.options.ngHtml2Js);
 		this.options.compilerOptions = _merge({}, babel.compilerOptions, this.options.compilerOptions);
 
 		this.options.minimize = _merge({
@@ -46,7 +47,7 @@ class NgHtml2JsTask {
 				.pipe(plumber())
 				.pipe(changed(options.dest, {extension: '.html'}))
 				.pipe(htmlMin(options.minimize))
-				.pipe(ngHtml2Js({export: 'commonjs'}))
+				.pipe(ngHtml2Js(options.ngHtml2Js))
 				.pipe(insert.prepend(options.prepend))
 				.pipe(to5(options.compilerOptions))
 				.pipe(gulp.dest(options.dest))
