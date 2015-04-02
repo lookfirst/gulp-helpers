@@ -110,3 +110,7 @@ The idea behind `framework` is that the dependency chain is in gulp-helpers inst
 gulp-helpers is written in ES6 and transpiled to ES5 using [babel](https://babeljs.io/). This allows us to take advantage of ES6 features while maintaining backwards compatibility. In my research, it seems like this is one of the first public [NPM projects](https://www.npmjs.com/package/gulp-helpers) to do this. Fun!
 
 Pull requests to add more tasks or improve on existing ones are welcome. I'd like this to become a useful repository for lots of projects.
+
+## Future
+
+When Gulp 4 is released, gulp-helpers will be rewritten to support [custom registries](https://github.com/phated/undertaker#custom-registries).
