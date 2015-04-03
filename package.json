@@ -1,6 +1,6 @@
 {
   "name": "gulp-helpers",
-  "version": "1.5.2",
+  "version": "1.5.3",
   "description": "A set of tasks and helpers for gulp",
   "main": "dist/index.js",
   "license": "MIT",
@@ -27,8 +27,8 @@
     "mocha": "*"
   },
   "dependencies": {
-    "babel": "^5.0.2",
-    "babel-runtime": "^5.0.2",
+    "babel": "^5.0.7",
+    "babel-runtime": "^5.0.7",
     "browser-sync": "^2.5.2",
     "connect-history-api-fallback": "^0.0.5",
     "del": "^1.1.1",
