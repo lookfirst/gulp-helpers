@@ -11,10 +11,11 @@ class BrowserSyncTask {
 			throw new Error('BrowserSyncTask: config is missing from configuration!');
 		}
 
-		if (!_isUndefined(this.options.historyApiFallback)) {
+		if (!_isUndefined(this.options.historyApiFallback) && this.options.historyApiFallback !== false) {
 			this.options.config.server = _merge({}, this.options.config.server);
 			this.options.config.server.middleware = _merge([], this.options.config.server.middleware);
-			this.options.config.server.middleware.push(historyApiFallback);
+			var historyApiFallbackConfig = _merge({}, this.options.historyApiFallback);
+			this.options.config.server.middleware.push(historyApiFallback(historyApiFallbackConfig));
 		}
 
 		return this;
