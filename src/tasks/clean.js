@@ -1,6 +1,7 @@
 import vinylPaths from 'vinyl-paths';
 import del from 'del';
 import _isUndefined from 'lodash/lang/isUndefined';
+import _isArray from 'lodash/lang/isArray';
 
 class CleanTask {
 	setOptions(options) {
@@ -16,7 +17,10 @@ class CleanTask {
 	defineTask(gulp) {
 		let options = this.options;
 		gulp.task(options.taskName, options.taskDeps, () => {
-			return gulp.src([options.src]).pipe(vinylPaths(del));
+			if (!_isArray(options.src)) {
+				options.src = [options.src];
+			}
+			return gulp.src(options.src).pipe(vinylPaths(del));
 		});
 	}
 }
