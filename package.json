@@ -1,6 +1,6 @@
 {
   "name": "gulp-helpers",
-  "version": "1.5.7",
+  "version": "1.6.0",
   "description": "A set of tasks and helpers for gulp",
   "main": "dist/index.js",
   "license": "MIT",
@@ -36,6 +36,7 @@
     "gulp-cached": "^1.1.0",
     "gulp-changed": "^1.2.1",
     "gulp-coffee": "^2.3.1",
+    "gulp-concat": "^2.5.2",
     "gulp-eslint": "^0.12.0",
     "gulp-insert": "^0.4.0",
     "gulp-jshint": "^1.10.0",
