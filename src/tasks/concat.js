@@ -1,6 +1,7 @@
 import plumber from 'gulp-plumber';
 import cache from 'gulp-cached';
 import concat from 'gulp-concat';
+import replace from 'gulp-replace-task';
 import sourcemaps from 'gulp-sourcemaps';
 import _isUndefined from 'lodash/lang/isUndefined';
 
@@ -31,15 +32,19 @@ class ConcatTask {
 				.pipe(plumber());
 
 			if (options.sourcemaps) {
-				chain.pipe(sourcemaps.init({loadMaps: true}));
+				chain = chain.pipe(sourcemaps.init({loadMaps: true}));
 			}
-			chain.pipe(concat(options.concat));
+			chain = chain.pipe(concat(options.concat));
+
+			if (options.replace) {
+				chain = chain.pipe(replace(options.replace));
+			}
 
 			if (options.sourcemaps) {
-				chain.pipe(sourcemaps.write());
+				chain = chain.pipe(sourcemaps.write());
 			}
 
-			chain.dest(options.dest);
+			chain = chain.pipe(gulp.dest(options.dest));
 
 			return chain;
 		});
