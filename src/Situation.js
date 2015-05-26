@@ -14,6 +14,10 @@ class Situation {
 		return this.sit === 'development';
 	}
 
+	isSandbox() {
+		return this.sit === 'sandbox';
+	}
+
 	value() {
 		return this.sit;
 	}
