@@ -2,6 +2,11 @@ import sourcemaps from 'gulp-sourcemaps';
 import uglify from 'gulp-uglify';
 import plumber from 'gulp-plumber';
 import _isUndefined from 'lodash/lang/isUndefined';
+import _merge from 'lodash/object/merge';
+
+let defaultUglifyOptions = {
+	mangle: true
+};
 
 class MinifyTask {
 	setOptions(options) {
@@ -15,6 +20,8 @@ class MinifyTask {
 			throw new Error('MinifyTask: dest is missing from configuration!');
 		}
 
+		this.options.uglifyOptions = _merge({}, defaultUglifyOptions, this.options.uglifyOptions);
+
 		return this;
 	}
 
@@ -24,7 +31,7 @@ class MinifyTask {
 			return gulp.src(options.src)
 				.pipe(plumber())
 				.pipe(sourcemaps.init({loadMaps: true}))
-				.pipe(uglify({mangle: true}))
+				.pipe(uglify(options.uglifyOptions))
 				.pipe(sourcemaps.write('.'))
 				.pipe(gulp.dest(options.dest))
 		});
