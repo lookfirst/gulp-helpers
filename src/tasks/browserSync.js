@@ -14,6 +14,7 @@ class BrowserSyncTask {
 		if (!_isUndefined(this.options.historyApiFallback) && this.options.historyApiFallback !== false) {
 			this.options.config.server = _merge({}, this.options.config.server);
 			this.options.config.server.middleware = _merge([], this.options.config.server.middleware);
+
 			var historyApiFallbackConfig = _merge({}, this.options.historyApiFallback);
 			this.options.config.server.middleware.push(historyApiFallback(historyApiFallbackConfig));
 		}
@@ -25,8 +26,9 @@ class BrowserSyncTask {
 		let options = this.options;
 		gulp.task(options.taskName, options.taskDeps, () => {
 			return new Promise((resolve) => {
-				browserSync(options.config, resolve);
-			})
+				let bs = browserSync.create();
+				bs.init(options.config, resolve);
+			});
 		});
 	}
 }
