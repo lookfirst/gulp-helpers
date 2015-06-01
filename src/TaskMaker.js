@@ -25,11 +25,12 @@ class TaskMaker {
 			let taskClass = require(`./tasks/${name}.js`);
 			new taskClass().setOptions(options).defineTask(this.gulp);
 
-			if (options.watch && options.src) {
+			if (options.watchTask && options.src) {
 				let newOptions = _merge({tasks: [options.taskName]}, options);
-
+				newOptions.taskName = `watch-${options.taskName}`;
 				let watchTask = require('./tasks/watch.js');
-				new watchTask().setOptions(newOptions).watch(this.gulp);
+				new watchTask().setOptions(newOptions).defineTask(this.gulp);
+				gutil.log(`Created watch task: ${newOptions.taskName}`);
 			}
 		} catch (e) {
 			gutil.log(gutil.colors.red(e));
