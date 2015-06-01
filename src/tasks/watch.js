@@ -27,9 +27,10 @@ class WatchTask {
 	}
 
 	watch(gulp) {
+		let options = this.options;
 		let watcher = gulp.watch(options.src, options.tasks);
 		watcher.on('change', (event) => {
-			gutil.log(gutil.colors.magenta(`File ${event.path} was ${event.type}, running tasks...`));
+			gutil.log(gutil.colors.magenta(`File ${event.path} was ${event.type}, running tasks: ${options.tasks}`));
 
 			// https://github.com/gulpjs/gulp/blob/master/docs/recipes/handling-the-delete-event-on-watch.md
 			if (event.type === 'deleted' && !_isUndefined(options.dest)) {
