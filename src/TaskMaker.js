@@ -29,6 +29,7 @@ class TaskMaker {
 				if (!options.tasks) {
 					options.tasks = [options.taskName];
 				}
+				options.taskName = `watch-${options.taskName}`;
 				new watchTask().setOptions(options).defineTask(this.gulp);
 			}
 		} catch (e) {
