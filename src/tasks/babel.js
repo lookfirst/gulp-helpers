@@ -64,7 +64,7 @@ class BabelTask {
 
 			chain = chain.pipe(sourcemaps.write('.'))
 				.pipe(gulp.dest(options.dest))
-				.pipe(options.globalBrowserSync.stream());
+				.pipe(options.globalBrowserSync.stream({match: '**/*.js'}));
 
 			return chain;
 		});
