@@ -4,6 +4,7 @@ import browserSync from 'browser-sync';
 class TaskMaker {
 	constructor(gulp) {
 		this.gulp = gulp;
+		this.globalBrowserSync = browserSync.create();
 	}
 
 	defineTask(name, options = {}) {
@@ -15,8 +16,9 @@ class TaskMaker {
 		if (!options.taskDeps) {
 			options.taskDeps = [];
 		}
-
-		options.globalBrowserSync = browserSync.create();
+		if (!options.globalBrowserSync) {
+			options.globalBrowserSync = this.globalBrowserSync;
+		}
 
 		try {
 			let taskClass = require(`./tasks/${name}.js`);
