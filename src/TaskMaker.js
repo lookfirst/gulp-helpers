@@ -19,8 +19,16 @@ class TaskMaker {
 		options.globalBrowserSync = browserSync.create();
 
 		try {
-			let taskClass = require('./tasks/' + name + '.js');
+			let taskClass = require(`./tasks/${name}.js`);
 			new taskClass().setOptions(options).defineTask(this.gulp);
+
+			if (options.watch && options.src) {
+				let watchTask = require('./tasks/watch.js');
+				if (!options.tasks) {
+					options.tasks = [options.taskName];
+				}
+				new watchTask().setOptions(options).defineTask(this.gulp);
+			}
 		} catch (e) {
 			gutil.log(gutil.colors.red(e));
 			throw e;
