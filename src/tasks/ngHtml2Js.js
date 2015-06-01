@@ -1,7 +1,6 @@
 import plumber from 'gulp-plumber';
 import cache from 'gulp-cached';
 import changed from 'gulp-changed';
-import browserSync from 'browser-sync';
 import to5 from 'gulp-babel';
 import htmlMin from 'gulp-minify-html';
 import ngHtml2Js from 'gulp-ng-html2js';
@@ -51,7 +50,7 @@ class NgHtml2JsTask {
 				.pipe(insert.prepend(options.prepend))
 				.pipe(to5(options.compilerOptions))
 				.pipe(gulp.dest(options.dest))
-				.pipe(browserSync.reload({stream: true}))
+				.pipe(options.globalBrowserSync.reload({stream: true}))
 		});
 	}
 }

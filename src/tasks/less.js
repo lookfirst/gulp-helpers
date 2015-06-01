@@ -4,7 +4,6 @@ import less from 'gulp-less';
 import cache from 'gulp-cached';
 import changed from 'gulp-changed';
 import sourcemaps from 'gulp-sourcemaps';
-import browserSync from 'browser-sync';
 import lessPluginCleanCSS from 'less-plugin-clean-css';
 
 let cleancss = new lessPluginCleanCSS({advanced: true});
@@ -35,7 +34,7 @@ class LessTask {
 				.pipe(less({plugins: [cleancss]}))
 				.pipe(sourcemaps.write('.'))
 				.pipe(gulp.dest(options.dest))
-				.pipe(browserSync.reload({stream: true}));
+				.pipe(options.globalBrowserSync.stream({match: '**/*.css'}));
 		});
 	}
 }

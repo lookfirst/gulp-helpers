@@ -1,4 +1,5 @@
 import gutil from 'gulp-util';
+import browserSync from 'browser-sync';
 
 class TaskMaker {
 	constructor(gulp) {
@@ -14,6 +15,8 @@ class TaskMaker {
 		if (!options.taskDeps) {
 			options.taskDeps = [];
 		}
+
+		options.globalBrowserSync = browserSync.create();
 
 		try {
 			let taskClass = require('./tasks/' + name + '.js');

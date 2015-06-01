@@ -1,6 +1,5 @@
 import _isUndefined from 'lodash/lang/isUndefined';
 import _merge from 'lodash/object/merge';
-import browserSync from 'browser-sync';
 import historyApiFallback from 'connect-history-api-fallback';
 
 class BrowserSyncTask {
@@ -26,8 +25,7 @@ class BrowserSyncTask {
 		let options = this.options;
 		gulp.task(options.taskName, options.taskDeps, () => {
 			return new Promise((resolve) => {
-				let bs = browserSync.create();
-				bs.init(options.config, resolve);
+				return options.globalBrowserSync.init(options.config, resolve);
 			});
 		});
 	}

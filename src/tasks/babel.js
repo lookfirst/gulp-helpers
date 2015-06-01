@@ -3,7 +3,6 @@ import plumber from 'gulp-plumber';
 import cache from 'gulp-cached';
 import changed from 'gulp-changed';
 import sourcemaps from 'gulp-sourcemaps';
-import browserSync from 'browser-sync';
 import coffee from 'gulp-coffee';
 import to5 from 'gulp-babel';
 import ngAnnotate from 'gulp-ng-annotate';
@@ -65,7 +64,7 @@ class BabelTask {
 
 			chain = chain.pipe(sourcemaps.write('.'))
 				.pipe(gulp.dest(options.dest))
-				.pipe(browserSync.reload({stream: true}));
+				.pipe(options.globalBrowserSync.stream());
 
 			return chain;
 		});

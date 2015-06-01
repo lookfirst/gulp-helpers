@@ -1,6 +1,5 @@
 import plumber from 'gulp-plumber';
 import cache from 'gulp-cached';
-import browserSync from 'browser-sync';
 import changed from 'gulp-changed';
 import rename from 'gulp-rename';
 import replace from 'gulp-replace-task';
@@ -41,7 +40,7 @@ class CopyTask {
 			}
 
 			chain = chain.pipe(gulp.dest(options.dest))
-				.pipe(browserSync.reload({stream: true}));
+				.pipe(options.globalBrowserSync.stream());
 
 			return chain;
 		});

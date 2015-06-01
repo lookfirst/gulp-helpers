@@ -3,7 +3,6 @@ import sass from 'gulp-sass';
 import cache from 'gulp-cached';
 import changed from 'gulp-changed';
 import sourcemaps from 'gulp-sourcemaps';
-import browserSync from 'browser-sync';
 import _isUndefined from 'lodash/lang/isUndefined';
 
 class SassTask {
@@ -32,7 +31,7 @@ class SassTask {
 				.pipe(sass(options.config))
 				.pipe(sourcemaps.write('.'))
 				.pipe(gulp.dest(options.dest))
-				.pipe(browserSync.reload({stream: true}));
+				.pipe(options.globalBrowserSync.reload({stream: true}));
 		});
 	}
 }
