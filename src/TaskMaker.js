@@ -1,5 +1,6 @@
 import gutil from 'gulp-util';
 import browserSync from 'browser-sync';
+import _merge from 'lodash/object/merge';
 
 class TaskMaker {
 	constructor(gulp) {
@@ -25,12 +26,10 @@ class TaskMaker {
 			new taskClass().setOptions(options).defineTask(this.gulp);
 
 			if (options.watch && options.src) {
+				let newOptions = _merge({tasks: [options.taskName]}, options);
+
 				let watchTask = require('./tasks/watch.js');
-				if (!options.tasks) {
-					options.tasks = [options.taskName];
-				}
-				options.taskName = `watch-${options.taskName}`;
-				new watchTask().setOptions(options).defineTask(this.gulp);
+				new watchTask().setOptions(newOptions).watch(this.gulp);
 			}
 		} catch (e) {
 			gutil.log(gutil.colors.red(e));

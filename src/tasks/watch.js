@@ -20,18 +20,23 @@ class WatchTask {
 
 	defineTask(gulp) {
 		let options = this.options;
+		let that = this;
 		gulp.task(options.taskName, options.taskDeps, () => {
-			let watcher = gulp.watch(options.src, options.tasks);
-			watcher.on('change', (event) => {
-				gutil.log(gutil.colors.magenta(`File ${event.path} was ${event.type}, running tasks...`));
+			that.watch(gulp);
+		});
+	}
 
-				// https://github.com/gulpjs/gulp/blob/master/docs/recipes/handling-the-delete-event-on-watch.md
-				if (event.type === 'deleted' && !_isUndefined(options.dest)) {
-					var filePathFromSrc = path.relative(path.resolve(options.src), event.path);
-					var destFilePath = path.resolve(options.dest, filePathFromSrc);
-					del.sync(destFilePath);
-				}
-			});
+	watch(gulp) {
+		let watcher = gulp.watch(options.src, options.tasks);
+		watcher.on('change', (event) => {
+			gutil.log(gutil.colors.magenta(`File ${event.path} was ${event.type}, running tasks...`));
+
+			// https://github.com/gulpjs/gulp/blob/master/docs/recipes/handling-the-delete-event-on-watch.md
+			if (event.type === 'deleted' && !_isUndefined(options.dest)) {
+				var filePathFromSrc = path.relative(path.resolve(options.src), event.path);
+				var destFilePath = path.resolve(options.dest, filePathFromSrc);
+				del.sync(destFilePath);
+			}
 		});
 	}
 }
