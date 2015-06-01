@@ -77,13 +77,14 @@ var path = {
 };
 
 taskMaker.defineTask('clean', {taskName: 'clean', src: path.output});
-taskMaker.defineTask('babel', {taskName: 'babel', src: path.source, dest: path.output, compilerOptions: {externalHelpers: false, optional: ['runtime']}});
-taskMaker.defineTask('watch', {taskName: 'watch', src: path.watch, tasks: ['babel'], taskDeps: ['babel']});
+taskMaker.defineTask('babel', {taskName: 'babel', src: path.source, dest: path.output, compilerOptions: {modules: 'system'}, watchTask: true});
 
-gulp.task('default', ['clean', 'watch']);
+gulp.task('default', ['clean', 'watch-babel']);
 ```
 
 * There is little code and a lot of configuration. It makes setting up new gulpfiles trivial because now I don't have to re-learn gulp and all of its plugins every time I want to start a new project. 
+
+* Automatically generate `gulp.watch` tasks by passing `watchTask: true`.
 
 * The `package.json` `devDependencies` section is so clean! Just a dependency on gulp and gulp-helpers.
 
