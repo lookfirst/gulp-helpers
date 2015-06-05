@@ -77,7 +77,8 @@ var path = {
 };
 
 taskMaker.defineTask('clean', {taskName: 'clean', src: path.output});
-taskMaker.defineTask('babel', {taskName: 'babel', src: path.source, dest: path.output, compilerOptions: {modules: 'system'}, watchTask: true});
+taskMaker.defineTask('babel', {taskName: 'babel', src: path.source, dest: path.output, 
+				compilerOptions: {modules: 'system'}, watchTask: true});
 
 gulp.task('default', ['clean', 'babel', 'watch-babel']);
 ```
