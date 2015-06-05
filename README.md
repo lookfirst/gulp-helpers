@@ -79,7 +79,7 @@ var path = {
 taskMaker.defineTask('clean', {taskName: 'clean', src: path.output});
 taskMaker.defineTask('babel', {taskName: 'babel', src: path.source, dest: path.output, compilerOptions: {modules: 'system'}, watchTask: true});
 
-gulp.task('default', ['clean', 'watch-babel']);
+gulp.task('default', ['clean', 'babel', 'watch-babel']);
 ```
 
 * There is little code and a lot of configuration. It makes setting up new gulpfiles trivial because now I don't have to re-learn gulp and all of its plugins every time I want to start a new project. 
