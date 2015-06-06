@@ -4,6 +4,7 @@ import cache from 'gulp-cached';
 import changed from 'gulp-changed';
 import sourcemaps from 'gulp-sourcemaps';
 import _isUndefined from 'lodash/lang/isUndefined';
+import _merge from 'lodash/object/merge';
 
 class SassTask {
 	setOptions(options) {
@@ -17,6 +18,12 @@ class SassTask {
 			throw new Error('SassTask: dest is missing from configuration!');
 		}
 
+		if (this.options.notify) {
+			this.options.plumberOptions = this.options.defaultErrorHandler;
+		}
+
+		this.options.plumberOptions = _merge({}, this.options.plumberOptions);
+
 		return this;
 	}
 
@@ -25,7 +32,7 @@ class SassTask {
 		gulp.task(options.taskName, options.taskDeps, () => {
 			return gulp.src(options.src)
 				.pipe(cache(options.taskName))
-				.pipe(plumber())
+				.pipe(plumber(options.plumberOptions))
 				.pipe(changed(options.dest, {extension: '.css'}))
 				.pipe(sourcemaps.init())
 				.pipe(sass(options.config))

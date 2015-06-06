@@ -1,6 +1,7 @@
 import gutil from 'gulp-util';
 import browserSync from 'browser-sync';
 import _merge from 'lodash/object/merge';
+import notify from 'gulp-notify';
 
 class TaskMaker {
 	constructor(gulp) {
@@ -19,6 +20,11 @@ class TaskMaker {
 		}
 		if (!options.globalBrowserSync) {
 			options.globalBrowserSync = this.globalBrowserSync;
+		}
+		if (!options.defaultErrorHandler) {
+			options.defaultErrorHandler = {
+				errorHandler: notify.onError('<%= error.message %>')
+			};
 		}
 
 		try {

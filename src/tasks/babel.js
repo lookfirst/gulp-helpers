@@ -28,10 +28,15 @@ class BabelTask {
 			throw new Error('BabelTask: dest is missing from configuration!');
 		}
 
+		if (this.options.notify) {
+			this.options.plumberOptions = this.options.defaultErrorHandler;
+		}
+
 		// Handle defaults
 		this.options.compilerOptions = _merge({}, defaultCompilerOptions, this.options.compilerOptions);
 		this.options.coffeeOptions = _merge({bare: true}, this.options.coffeeOptions);
 		this.options.ngAnnotateOptions = _merge({sourceMap: true}, this.options.ngAnnotateOptions);
+		this.options.plumberOptions = _merge({}, this.options.plumberOptions);
 
 		return this;
 	}
@@ -42,8 +47,9 @@ class BabelTask {
 		gulp.task(options.taskName, options.taskDeps, () => {
 			let chain = gulp.src(options.src);
 
-			chain = chain.pipe(cache(options.taskName))
-				.pipe(plumber())
+			chain = chain
+				.pipe(cache(options.taskName))
+				.pipe(plumber(options.plumberOptions))
 				.pipe(changed(options.dest, {extension: '.js'}))
 				.pipe(rename(function(path) {
 					if (path.extname === '.jsx') {

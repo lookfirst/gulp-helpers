@@ -21,7 +21,12 @@ class LessTask {
 			throw new Error('LessTask: dest is missing from configuration!');
 		}
 
+		if (this.options.notify) {
+			this.options.plumberOptions = this.options.defaultErrorHandler;
+		}
+
 		this.options.sourcemapOptions = _merge({}, this.options.sourcemapOptions);
+		this.options.plumberOptions = _merge({}, this.options.plumberOptions);
 
 		return this;
 	}
@@ -31,7 +36,7 @@ class LessTask {
 		gulp.task(options.taskName, options.taskDeps, () => {
 			return gulp.src(options.src)
 				.pipe(cache(options.taskName))
-				.pipe(plumber())
+				.pipe(plumber(options.plumberOptions))
 				.pipe(changed(options.dest, {extension: '.css'}))
 				.pipe(sourcemaps.init())
 				.pipe(less({plugins: [cleancss]}))
