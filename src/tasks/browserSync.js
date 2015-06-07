@@ -25,7 +25,8 @@ class BrowserSyncTask {
 		let options = this.options;
 		gulp.task(options.taskName, options.taskDeps, () => {
 			return new Promise((resolve) => {
-				return options.globalBrowserSync.init(options.config, resolve);
+				let bs = options.taskMaker.createBrowserSync(options.taskName);
+				return bs.init(options.config, resolve);
 			});
 		});
 	}

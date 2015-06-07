@@ -6,20 +6,29 @@ import notify from 'gulp-notify';
 class TaskMaker {
 	constructor(gulp) {
 		this.gulp = gulp;
-		this.globalBrowserSync = browserSync.create();
+		this.globalBrowserSyncs = {};
+	}
+
+	createBrowserSync(name) {
+		let bs = browserSync.create(name);
+		this.globalBrowserSyncs[name] = bs;
+		return bs;
 	}
 
 	defineTask(name, options = {}) {
 		name = this._resolveAliases(name);
 
+		if (!options.taskMaker) {
+			options.taskMaker = this;
+		}
 		if (!options.taskName) {
 			options.taskName = name;
 		}
 		if (!options.taskDeps) {
 			options.taskDeps = [];
 		}
-		if (!options.globalBrowserSync) {
-			options.globalBrowserSync = this.globalBrowserSync;
+		if (!options.globalBrowserSyncs) {
+			options.globalBrowserSyncs = this.globalBrowserSyncs;
 		}
 		if (!options.defaultErrorHandler) {
 			options.defaultErrorHandler = {
