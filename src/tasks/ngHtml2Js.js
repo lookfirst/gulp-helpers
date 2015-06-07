@@ -7,6 +7,7 @@ import ngHtml2Js from 'gulp-ng-html2js';
 import insert from 'gulp-insert';
 import _isUndefined from 'lodash/lang/isUndefined';
 import _merge from 'lodash/object/merge';
+import _forEach from 'lodash/collection/forEach';
 
 import babel from './babel';
 
@@ -41,7 +42,7 @@ class NgHtml2JsTask {
 	defineTask(gulp) {
 		let options = this.options;
 		gulp.task(options.taskName, options.taskDeps, () => {
-			return gulp.src(options.src)
+			let chain = gulp.src(options.src)
 				.pipe(cache(options.taskName))
 				.pipe(plumber())
 				.pipe(changed(options.dest, {extension: '.html'}))
@@ -49,8 +50,13 @@ class NgHtml2JsTask {
 				.pipe(ngHtml2Js(options.ngHtml2Js))
 				.pipe(insert.prepend(options.prepend))
 				.pipe(to5(options.compilerOptions))
-				.pipe(gulp.dest(options.dest))
-				.pipe(options.globalBrowserSync.reload({stream: true}))
+				.pipe(gulp.dest(options.dest));
+
+			_forEach(options.globalBrowserSyncs, (bs) => {
+				chain = chain.pipe(bs.stream());
+			});
+
+			return chain;
 		});
 	}
 }

@@ -4,6 +4,7 @@ import changed from 'gulp-changed';
 import rename from 'gulp-rename';
 import replace from 'gulp-replace-task';
 import _isUndefined from 'lodash/lang/isUndefined';
+import _forEach from 'lodash/collection/forEach';
 
 class CopyTask {
 	setOptions(options) {
@@ -39,8 +40,11 @@ class CopyTask {
 				chain = chain.pipe(rename(options.rename));
 			}
 
-			chain = chain.pipe(gulp.dest(options.dest))
-				.pipe(options.globalBrowserSync.stream());
+			chain = chain.pipe(gulp.dest(options.dest));
+
+			_forEach(options.globalBrowserSyncs, (bs) => {
+				chain = chain.pipe(bs.stream());
+			});
 
 			return chain;
 		});

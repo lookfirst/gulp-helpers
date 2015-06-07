@@ -5,6 +5,7 @@ import changed from 'gulp-changed';
 import sourcemaps from 'gulp-sourcemaps';
 import _isUndefined from 'lodash/lang/isUndefined';
 import _merge from 'lodash/object/merge';
+import _forEach from 'lodash/collection/forEach';
 
 class SassTask {
 	setOptions(options) {
@@ -30,15 +31,20 @@ class SassTask {
 	defineTask(gulp) {
 		let options = this.options;
 		gulp.task(options.taskName, options.taskDeps, () => {
-			return gulp.src(options.src)
+			let chain = gulp.src(options.src)
 				.pipe(cache(options.taskName))
 				.pipe(plumber(options.plumberOptions))
 				.pipe(changed(options.dest, {extension: '.css'}))
 				.pipe(sourcemaps.init())
 				.pipe(sass(options.config))
 				.pipe(sourcemaps.write('.'))
-				.pipe(gulp.dest(options.dest))
-				.pipe(options.globalBrowserSync.reload({stream: true}));
+				.pipe(gulp.dest(options.dest));
+
+			_forEach(options.globalBrowserSyncs, (bs) => {
+				chain = chain.pipe(bs.stream());
+			});
+
+			return chain;
 		});
 	}
 }

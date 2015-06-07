@@ -1,5 +1,7 @@
 import _isUndefined from 'lodash/lang/isUndefined';
 import _merge from 'lodash/object/merge';
+import _forEach from 'lodash/collection/forEach';
+
 import plumber from 'gulp-plumber';
 import less from 'gulp-less';
 import cache from 'gulp-cached';
@@ -34,15 +36,20 @@ class LessTask {
 	defineTask(gulp) {
 		let options = this.options;
 		gulp.task(options.taskName, options.taskDeps, () => {
-			return gulp.src(options.src)
+			let chain = gulp.src(options.src)
 				.pipe(cache(options.taskName))
 				.pipe(plumber(options.plumberOptions))
 				.pipe(changed(options.dest, {extension: '.css'}))
 				.pipe(sourcemaps.init())
 				.pipe(less({plugins: [cleancss]}))
 				.pipe(sourcemaps.write('.', options.sourcemapOptions))
-				.pipe(gulp.dest(options.dest))
-				.pipe(options.globalBrowserSync.stream({match: '**/*.css'}));
+				.pipe(gulp.dest(options.dest));
+
+			_forEach(options.globalBrowserSyncs, (bs) => {
+				chain = chain.pipe(bs.stream({match: '**/*.css'}));
+			});
+
+			return chain;
 		});
 	}
 }

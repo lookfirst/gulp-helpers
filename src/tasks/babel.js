@@ -9,6 +9,7 @@ import ngAnnotate from 'gulp-ng-annotate';
 import rename from 'gulp-rename';
 import _isUndefined from 'lodash/lang/isUndefined';
 import _merge from 'lodash/object/merge';
+import _forEach from 'lodash/collection/forEach';
 
 let defaultCompilerOptions = {
 	externalHelpers: true,
@@ -69,8 +70,11 @@ class BabelTask {
 			}
 
 			chain = chain.pipe(sourcemaps.write('.'))
-				.pipe(gulp.dest(options.dest))
-				.pipe(options.globalBrowserSync.stream({match: '**/*.js'}));
+				.pipe(gulp.dest(options.dest));
+
+			_forEach(options.globalBrowserSyncs, (bs) => {
+				chain = chain.pipe(bs.stream({match: '**/*.js'}));
+			});
 
 			return chain;
 		});
