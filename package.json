@@ -39,6 +39,7 @@
     "gulp-concat": "^2.6.0",
     "gulp-eslint": "^0.14.0",
     "gulp-insert": "^0.4.0",
+    "gulp-jade": "~1.0.1",
     "gulp-jshint": "^1.11.0",
     "gulp-less": "^3.0.3",
     "gulp-minify-html": "^1.0.3",
