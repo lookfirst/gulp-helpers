@@ -18,6 +18,10 @@ class Situation {
 		return this.sit === 'sandbox';
 	}
 
+	isDemo() {
+		return this.sit === 'demo';
+	}
+
 	value() {
 		return this.sit;
 	}
