@@ -5,6 +5,7 @@ import changed from 'gulp-changed';
 import sourcemaps from 'gulp-sourcemaps';
 import coffee from 'gulp-coffee';
 import to5 from 'gulp-babel';
+import uglify from 'gulp-uglify';
 import ngAnnotate from 'gulp-ng-annotate';
 import rename from 'gulp-rename';
 import _isUndefined from 'lodash/lang/isUndefined';
@@ -15,6 +16,10 @@ let defaultCompilerOptions = {
 	externalHelpers: true,
 	comments: false,
 	compact: false
+};
+
+let defaultUglifyOptions = {
+	mangle: true
 };
 
 class BabelTask {
@@ -38,6 +43,7 @@ class BabelTask {
 		this.options.coffeeOptions = _merge({bare: true}, this.options.coffeeOptions);
 		this.options.ngAnnotateOptions = _merge({sourceMap: true}, this.options.ngAnnotateOptions);
 		this.options.plumberOptions = _merge({}, this.options.plumberOptions);
+		this.options.uglifyOptions = _merge({}, defaultUglifyOptions, this.options.uglifyOptions);
 
 		return this;
 	}
@@ -67,6 +73,10 @@ class BabelTask {
 
 			if (options.ngAnnotate) {
 				chain = chain.pipe(ngAnnotate(options.ngAnnotateOptions));
+			}
+
+			if (options.uglify) {
+				chain = chain.pipe(uglify(options.uglifyOptions));
 			}
 
 			chain = chain.pipe(sourcemaps.write('.'))
