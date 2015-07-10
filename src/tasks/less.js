@@ -47,8 +47,8 @@ class LessTask {
 				.pipe(cache(options.taskName))
 				.pipe(plumber(options.plumberOptions))
 				//.pipe(lessDependents())
-				.pipe(changed(options.dest, {extension: '.css'}))
-				;
+				.pipe(changed(options.dest, {extension: '.css'}));
+
 
 			if (options.sourcemaps) {
 				chain = chain.pipe(sourcemaps.init());
