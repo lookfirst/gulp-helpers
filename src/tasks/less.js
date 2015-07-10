@@ -23,6 +23,10 @@ class LessTask {
 			throw new Error('LessTask: dest is missing from configuration!');
 		}
 
+		if (_isUndefined(this.options.sourcemaps)) {
+			this.options.sourcemaps = true;
+		}
+
 		if (this.options.notify) {
 			this.options.plumberOptions = this.options.defaultErrorHandler;
 		}
@@ -39,11 +43,21 @@ class LessTask {
 			let chain = gulp.src(options.src)
 				.pipe(cache(options.taskName))
 				.pipe(plumber(options.plumberOptions))
-				.pipe(changed(options.dest, {extension: '.css'}))
-				.pipe(sourcemaps.init())
-				.pipe(less({plugins: [cleancss]}))
-				.pipe(sourcemaps.write('.', options.sourcemapOptions))
-				.pipe(gulp.dest(options.dest));
+				.pipe(changed(options.dest, {extension: '.css'}));
+
+			if (options.sourcemaps) {
+				chain = chain.pipe(sourcemaps.init());
+			}
+
+			// enable cleancss if we have sourcemaps which will make them readable
+			let plugins = options.sourcemaps ? [cleancss] : [];
+			chain = chain.pipe(less({plugins: plugins}));
+
+			if (options.sourcemaps) {
+				chain = chain.pipe(sourcemaps.write('.', options.sourcemapOptions))
+			}
+
+			chain = chain.pipe(gulp.dest(options.dest));
 
 			_forEach(options.globalBrowserSyncs, (bs) => {
 				chain = chain.pipe(bs.stream({match: '**/*.css'}));
