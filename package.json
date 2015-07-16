@@ -1,6 +1,6 @@
 {
   "name": "gulp-helpers",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "A set of tasks and helpers for gulp",
   "main": "dist/index.js",
   "license": "MIT",
@@ -41,6 +41,7 @@
     "gulp-insert": "^0.4.0",
     "gulp-jshint": "^1.11.2",
     "gulp-less": "^3.0.3",
+    "gulp-less-dependents": "^1.1.1",
     "gulp-minify-html": "^1.0.3",
     "gulp-ng-annotate": "^1.0.0",
     "gulp-ng-html2js": "lookfirst/gulp-ng-html2js#export2",

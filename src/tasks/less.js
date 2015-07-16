@@ -8,6 +8,7 @@ import cache from 'gulp-cached';
 import changed from 'gulp-changed';
 import sourcemaps from 'gulp-sourcemaps';
 import lessPluginCleanCSS from 'less-plugin-clean-css';
+import lessDependents from 'gulp-less-dependents';
 
 let cleancss = new lessPluginCleanCSS({advanced: true});
 
@@ -43,6 +44,7 @@ class LessTask {
 			let chain = gulp.src(options.src)
 				.pipe(cache(options.taskName))
 				.pipe(plumber(options.plumberOptions))
+				.pipe(lessDependents())
 				.pipe(changed(options.dest, {extension: '.css'}));
 
 			if (options.sourcemaps) {
