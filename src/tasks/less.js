@@ -1,10 +1,8 @@
 /*jshint esnext: true*/
-
 import _isUndefined from 'lodash/lang/isUndefined';
 import _merge from 'lodash/object/merge';
 import _forEach from 'lodash/collection/forEach';
 
-import debug from 'gulp-debug';
 import filter from 'gulp-filter';
 import plumber from 'gulp-plumber';
 import less from 'gulp-less';
