@@ -24,6 +24,8 @@
   "devDependencies": {
     "chai": "*",
     "gulp": "^3.9.0",
+    "gulp-filter": "^2.0.2",
+    "gulp-less-dependents": "^1.1.1",
     "mocha": "*"
   },
   "dependencies": {
