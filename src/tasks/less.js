@@ -1,15 +1,15 @@
+/*jshint esnext: true*/
 import _isUndefined from 'lodash/lang/isUndefined';
 import _merge from 'lodash/object/merge';
 import _forEach from 'lodash/collection/forEach';
 
+import filter from 'gulp-filter';
 import plumber from 'gulp-plumber';
 import less from 'gulp-less';
+import lessDependents from 'gulp-less-dependents';
 import cache from 'gulp-cached';
-import changed from 'gulp-changed';
 import sourcemaps from 'gulp-sourcemaps';
 import lessPluginCleanCSS from 'less-plugin-clean-css';
-//import lessDependents from 'gulp-less-dependents';
-//import watch from 'gulp-watch';
 
 let cleancss = new lessPluginCleanCSS({advanced: true});
 
@@ -43,12 +43,8 @@ class LessTask {
 		let options = this.options;
 		gulp.task(options.taskName, options.taskDeps, () => {
 			let chain = gulp.src(options.src)
-				//.pipe(watch(options.src))
-				.pipe(cache(options.taskName))
-				.pipe(plumber(options.plumberOptions))
-				//.pipe(lessDependents())
-				.pipe(changed(options.dest, {extension: '.css'}))
-				;
+				.pipe(lessDependents())
+				.pipe(plumber(options.plumberOptions));
 
 			if (options.sourcemaps) {
 				chain = chain.pipe(sourcemaps.init());
@@ -59,13 +55,15 @@ class LessTask {
 			chain = chain.pipe(less({plugins: plugins}));
 
 			if (options.sourcemaps) {
-				chain = chain.pipe(sourcemaps.write('.', options.sourcemapOptions))
+				chain = chain.pipe(sourcemaps.write('.', options.sourcemapOptions));
 			}
 
-			chain = chain.pipe(gulp.dest(options.dest));
+			chain = chain
+					.pipe(gulp.dest(options.dest))
+					.pipe(filter(['*', '!*.css.map']));
 
 			_forEach(options.globalBrowserSyncs, (bs) => {
-				chain = chain.pipe(bs.stream({match: '**/*.css'}));
+				chain = chain.pipe(bs.stream());
 			});
 
 			return chain;
