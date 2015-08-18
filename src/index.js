@@ -37,4 +37,4 @@ class GulpHelpers {
 	}
 }
 
-module.exports = new GulpHelpers();
+export default new GulpHelpers();

@@ -67,4 +67,4 @@ class TaskMaker {
 	}
 }
 
-module.exports = TaskMaker;
+export default TaskMaker;

@@ -27,4 +27,4 @@ class Situation {
 	}
 }
 
-module.exports = Situation;
+export default Situation;
