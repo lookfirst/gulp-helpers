@@ -17,7 +17,7 @@ class JshintTask {
 		let options = this.options;
 		gulp.task(options.taskName, options.taskDeps, () => {
 			return gulp.src(options.src)
-				.pipe(jshint())
+				.pipe(jshint(options.jsHintOptions))
 				.pipe(jshint.reporter(stylish))
 		});
 	}
