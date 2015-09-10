@@ -1,7 +1,5 @@
 import plumber from 'gulp-plumber';
 import sass from 'gulp-sass';
-import cache from 'gulp-cached';
-import changed from 'gulp-changed';
 import sourcemaps from 'gulp-sourcemaps';
 import _isUndefined from 'lodash/lang/isUndefined';
 import _merge from 'lodash/object/merge';
@@ -32,9 +30,7 @@ class SassTask {
 		let options = this.options;
 		gulp.task(options.taskName, options.taskDeps, () => {
 			let chain = gulp.src(options.src)
-				.pipe(cache(options.taskName))
 				.pipe(plumber(options.plumberOptions))
-				.pipe(changed(options.dest, {extension: '.css'}))
 				.pipe(sourcemaps.init())
 				.pipe(sass(options.config))
 				.pipe(sourcemaps.write('.'))
