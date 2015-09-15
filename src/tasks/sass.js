@@ -37,7 +37,7 @@ class SassTask {
 				.pipe(gulp.dest(options.dest));
 
 			_forEach(options.globalBrowserSyncs, (bs) => {
-				chain = chain.pipe(bs.stream());
+				chain = chain.pipe(bs.stream({match: '**/*.css'}));
 			});
 
 			return chain;
