@@ -1,5 +1,3 @@
-import 'cache-require-paths';
-
 import _isUndefined from 'lodash/lang/isUndefined';
 
 import Situation from './Situation';
