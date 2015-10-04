@@ -1,6 +1,6 @@
 {
   "name": "gulp-helpers",
-  "version": "2.0.14",
+  "version": "2.0.15",
   "description": "A set of tasks and helpers for gulp",
   "main": "dist/index.js",
   "license": "MIT",

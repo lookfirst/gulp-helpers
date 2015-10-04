@@ -3,6 +3,7 @@ import cache from 'gulp-cached';
 import changed from 'gulp-changed';
 import rename from 'gulp-rename';
 import replace from 'gulp-replace-task';
+import chmod from 'gulp-chmod';
 import _isUndefined from 'lodash/lang/isUndefined';
 import _forEach from 'lodash/collection/forEach';
 
@@ -38,6 +39,10 @@ class CopyTask {
 
 			if (options.rename) {
 				chain = chain.pipe(rename(options.rename));
+			}
+
+			if (!_isUndefined(options.chmod)) {
+				chain = chain.pipe(chmod(options.chmod));
 			}
 
 			chain = chain.pipe(gulp.dest(options.dest));

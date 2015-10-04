@@ -9,6 +9,7 @@ import less from 'gulp-less';
 import lessDependents from 'gulp-less-dependents';
 import cache from 'gulp-cached';
 import sourcemaps from 'gulp-sourcemaps';
+import chmod from 'gulp-chmod';
 import lessPluginCleanCSS from 'less-plugin-clean-css';
 
 let cleancss = new lessPluginCleanCSS({advanced: true});
@@ -58,9 +59,11 @@ class LessTask {
 				chain = chain.pipe(sourcemaps.write('.', options.sourcemapOptions));
 			}
 
-			chain = chain
-					.pipe(gulp.dest(options.dest))
-					.pipe(filter(['*', '!*.css.map']));
+			if (!_isUndefined(options.chmod)) {
+				chain = chain.pipe(chmod(options.chmod));
+			}
+
+			chain = chain.pipe(gulp.dest(options.dest)).pipe(filter(['*', '!*.css.map']));
 
 			_forEach(options.globalBrowserSyncs, (bs) => {
 				chain = chain.pipe(bs.stream());

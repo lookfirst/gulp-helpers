@@ -3,6 +3,7 @@ import cache from 'gulp-cached';
 import concat from 'gulp-concat';
 import replace from 'gulp-replace-task';
 import sourcemaps from 'gulp-sourcemaps';
+import chmod from 'gulp-chmod';
 import _isUndefined from 'lodash/lang/isUndefined';
 
 class ConcatTask {
@@ -42,6 +43,10 @@ class ConcatTask {
 
 			if (options.sourcemaps) {
 				chain = chain.pipe(sourcemaps.write());
+			}
+
+			if (!_isUndefined(options.chmod)) {
+				chain = chain.pipe(chmod(options.chmod));
 			}
 
 			chain = chain.pipe(gulp.dest(options.dest));

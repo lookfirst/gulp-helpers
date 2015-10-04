@@ -6,6 +6,7 @@ import uglify from 'gulp-uglify';
 import htmlMin from 'gulp-minify-html';
 import ngHtml2Js from 'gulp-ng-html2js';
 import insert from 'gulp-insert';
+import chmod from 'gulp-chmod';
 import _isUndefined from 'lodash/lang/isUndefined';
 import _merge from 'lodash/object/merge';
 import _forEach from 'lodash/collection/forEach';
@@ -59,6 +60,10 @@ class NgHtml2JsTask {
 
 			if (options.uglify) {
 				chain = chain.pipe(uglify(options.uglifyOptions));
+			}
+
+			if (!_isUndefined(options.chmod)) {
+				chain = chain.pipe(chmod(options.chmod));
 			}
 
 			chain = chain.pipe(gulp.dest(options.dest));
