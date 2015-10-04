@@ -1,6 +1,7 @@
 import sourcemaps from 'gulp-sourcemaps';
 import uglify from 'gulp-uglify';
 import plumber from 'gulp-plumber';
+import chmod from 'gulp-chmod';
 import _isUndefined from 'lodash/lang/isUndefined';
 import _merge from 'lodash/object/merge';
 
@@ -28,12 +29,18 @@ class MinifyTask {
 	defineTask(gulp) {
 		let options = this.options;
 		gulp.task(options.taskName, options.taskDeps, () => {
-			return gulp.src(options.src)
+			let chain = gulp.src(options.src)
 				.pipe(plumber())
 				.pipe(sourcemaps.init({loadMaps: true}))
 				.pipe(uglify(options.uglifyOptions))
-				.pipe(sourcemaps.write('.'))
-				.pipe(gulp.dest(options.dest))
+				.pipe(sourcemaps.write('.'));
+			if (!_isUndefined(options.chmod)) {
+				chain = chain.pipe(chmod(options.chmod));
+			}
+
+			chain = chain.pipe(gulp.dest(options.dest));
+
+			return chain;
 		});
 	}
 }

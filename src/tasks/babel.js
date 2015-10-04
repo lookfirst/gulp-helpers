@@ -8,6 +8,7 @@ import to5 from 'gulp-babel';
 import uglify from 'gulp-uglify';
 import ngAnnotate from 'gulp-ng-annotate';
 import rename from 'gulp-rename';
+import chmod from 'gulp-chmod';
 import _isUndefined from 'lodash/lang/isUndefined';
 import _merge from 'lodash/object/merge';
 import _forEach from 'lodash/collection/forEach';
@@ -77,6 +78,10 @@ class BabelTask {
 
 			if (options.uglify) {
 				chain = chain.pipe(uglify(options.uglifyOptions));
+			}
+
+			if (!_isUndefined(options.chmod)) {
+				chain = chain.pipe(chmod(options.chmod));
 			}
 
 			chain = chain.pipe(sourcemaps.write('.'))
