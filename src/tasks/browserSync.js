@@ -1,6 +1,8 @@
+import _isArray from 'lodash/lang/isArray';
+import _isString from 'lodash/lang/isString';
 import _isUndefined from 'lodash/lang/isUndefined';
 import _merge from 'lodash/object/merge';
-import historyApiFallback from 'connect-history-api-fallback';
+import historyApiFallback from 'express-history-api-fallback';
 
 class BrowserSyncTask {
 	setOptions(options) {
@@ -14,8 +16,15 @@ class BrowserSyncTask {
 			this.options.config.server = _merge({}, this.options.config.server);
 			this.options.config.server.middleware = _merge([], this.options.config.server.middleware);
 
-			var historyApiFallbackConfig = _merge({}, this.options.historyApiFallback);
-			this.options.config.server.middleware.push(historyApiFallback(historyApiFallbackConfig));
+			let historyApiFallbackConfig;
+			if (_isArray(this.options.historyApiFallback)) {
+				historyApiFallbackConfig = this.options.historyApiFallback;
+			} else if (_isString(this.options.historyApiFallback)) {
+				historyApiFallbackConfig = [this.options.historyApiFallback];
+			} else {
+				throw new Error('BrowserSyncTask: historyApiFallback must be an absolute file path string or an Express Response.sendFile arguments array');
+			}
+			this.options.config.server.middleware.push(historyApiFallback(...historyApiFallbackConfig));
 		}
 
 		return this;
