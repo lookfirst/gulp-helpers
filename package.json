@@ -1,6 +1,6 @@
 {
   "name": "gulp-helpers",
-  "version": "3.0.0",
+  "version": "3.0.1",
   "description": "A set of tasks and helpers for gulp",
   "main": "dist/index.js",
   "license": "MIT",
@@ -22,6 +22,7 @@
     "prepublish": "npm run-script compile"
   },
   "devDependencies": {
+    "babel-plugin-external-helpers-2": "^6.0.15",
     "chai": "*",
     "gulp": "^3.9.0",
     "gulp-filter": "^3.0.1",
