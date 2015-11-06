@@ -1,6 +1,6 @@
 {
   "name": "gulp-helpers",
-  "version": "3.0.1",
+  "version": "3.0.2",
   "description": "A set of tasks and helpers for gulp",
   "main": "dist/index.js",
   "license": "MIT",
@@ -31,6 +31,7 @@
   },
   "dependencies": {
     "babel": "^6.0.15",
+    "babel-plugin-external-helpers-2": "^6.0.15",
     "babel-runtime": "^6.0.14",
     "browser-sync": "^2.9.12",
     "del": "^2.0.2",
