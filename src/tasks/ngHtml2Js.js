@@ -50,7 +50,7 @@ class NgHtml2JsTask {
 		let options = this.options;
 		gulp.task(options.taskName, options.taskDeps, () => {
 			let chain;
-			if(this.options.ngHtml2Js && this.options.ngHtml2Js.extension === '.ts') {
+			if (this.options.ngHtml2Js && this.options.ngHtml2Js.extension === '.ts') {
 				chain = gulp.src(options.src)
 					.pipe(cache(options.taskName))
 					.pipe(plumber())
@@ -80,7 +80,7 @@ class NgHtml2JsTask {
 
 				_forEach(options.globalBrowserSyncs, (bs) => {
 					chain = chain.pipe(bs.stream());
-				});	
+				});
 			}
 
 			return chain;
