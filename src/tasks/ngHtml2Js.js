@@ -49,14 +49,23 @@ class NgHtml2JsTask {
 	defineTask(gulp) {
 		let options = this.options;
 		gulp.task(options.taskName, options.taskDeps, () => {
-			let chain = gulp.src(options.src)
-				.pipe(cache(options.taskName))
-				.pipe(plumber())
-				.pipe(changed(options.dest, {extension: '.html'}))
-				.pipe(htmlMin(options.minimize))
-				.pipe(ngHtml2Js(options.ngHtml2Js))
-				.pipe(insert.prepend(options.prepend))
-				.pipe(to5(options.compilerOptions));
+			if(this.options.ngHtml2Js.extension === '.ts') {
+				let chain = gulp.src(options.src)
+					.pipe(cache(options.taskName))
+					.pipe(plumber())
+					.pipe(htmlMin(options.minimize))
+					.pipe(ngHtml2Js(options.ngHtml2Js))
+					.pipe(insert.prepend(options.prepend))
+					.pipe(to5(options.compilerOptions));
+			} else {
+				let chain = gulp.src(options.src)
+					.pipe(cache(options.taskName))
+					.pipe(plumber())
+					.pipe(changed(options.dest, {extension: '.html'}))
+					.pipe(htmlMin(options.minimize))
+					.pipe(ngHtml2Js(options.ngHtml2Js))
+					.pipe(insert.prepend(options.prepend));
+			}
 
 			if (options.uglify) {
 				chain = chain.pipe(uglify(options.uglifyOptions));
