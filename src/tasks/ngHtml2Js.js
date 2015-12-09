@@ -49,14 +49,13 @@ class NgHtml2JsTask {
 	defineTask(gulp) {
 		let options = this.options;
 		gulp.task(options.taskName, options.taskDeps, () => {
-			if(this.options.ngHtml2Js.extension === '.ts') {
+			if(this.options.ngHtml2Js && this.options.ngHtml2Js.extension === '.ts') {
 				let chain = gulp.src(options.src)
 					.pipe(cache(options.taskName))
 					.pipe(plumber())
 					.pipe(htmlMin(options.minimize))
 					.pipe(ngHtml2Js(options.ngHtml2Js))
 					.pipe(insert.prepend(options.prepend))
-					.pipe(to5(options.compilerOptions));
 			} else {
 				let chain = gulp.src(options.src)
 					.pipe(cache(options.taskName))
@@ -64,7 +63,8 @@ class NgHtml2JsTask {
 					.pipe(changed(options.dest, {extension: '.html'}))
 					.pipe(htmlMin(options.minimize))
 					.pipe(ngHtml2Js(options.ngHtml2Js))
-					.pipe(insert.prepend(options.prepend));
+					.pipe(insert.prepend(options.prepend))
+					.pipe(to5(options.compilerOptions));
 			}
 
 			if (options.uglify) {
