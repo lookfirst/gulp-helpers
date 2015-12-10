@@ -67,7 +67,7 @@ class NgHtml2JsTask {
 				 .pipe(insert.prepend(options.prepend))
 				 .pipe(to5(options.compilerOptions));
 			}
-			if(chain) {
+			if (chain) {
 				if (options.uglify) {
 					chain = chain.pipe(uglify(options.uglifyOptions));
 				}
