@@ -49,37 +49,39 @@ class NgHtml2JsTask {
 	defineTask(gulp) {
 		let options = this.options;
 		gulp.task(options.taskName, options.taskDeps, () => {
-			if(this.options.ngHtml2Js.extension === '.ts') {
-				let chain = gulp.src(options.src)
+			let chain;
+			if (this.options.ngHtml2Js && this.options.ngHtml2Js.extension === '.ts') {
+				chain = gulp.src(options.src)
 					.pipe(cache(options.taskName))
 					.pipe(plumber())
 					.pipe(htmlMin(options.minimize))
 					.pipe(ngHtml2Js(options.ngHtml2Js))
 					.pipe(insert.prepend(options.prepend))
-					.pipe(to5(options.compilerOptions));
 			} else {
-				let chain = gulp.src(options.src)
-					.pipe(cache(options.taskName))
-					.pipe(plumber())
-					.pipe(changed(options.dest, {extension: '.html'}))
-					.pipe(htmlMin(options.minimize))
-					.pipe(ngHtml2Js(options.ngHtml2Js))
-					.pipe(insert.prepend(options.prepend));
+				chain = gulp.src(options.src)
+				 .pipe(cache(options.taskName))
+				 .pipe(plumber())
+				 .pipe(changed(options.dest, {extension: '.html'}))
+				 .pipe(htmlMin(options.minimize))
+				 .pipe(ngHtml2Js(options.ngHtml2Js))
+				 .pipe(insert.prepend(options.prepend))
+				 .pipe(to5(options.compilerOptions));
 			}
+			if (chain) {
+				if (options.uglify) {
+					chain = chain.pipe(uglify(options.uglifyOptions));
+				}
 
-			if (options.uglify) {
-				chain = chain.pipe(uglify(options.uglifyOptions));
+				if (!_isUndefined(options.chmod)) {
+					chain = chain.pipe(chmod(options.chmod));
+				}
+
+				chain = chain.pipe(gulp.dest(options.dest));
+
+				_forEach(options.globalBrowserSyncs, (bs) => {
+					chain = chain.pipe(bs.stream());
+				});
 			}
-
-			if (!_isUndefined(options.chmod)) {
-				chain = chain.pipe(chmod(options.chmod));
-			}
-
-			chain = chain.pipe(gulp.dest(options.dest));
-
-			_forEach(options.globalBrowserSyncs, (bs) => {
-				chain = chain.pipe(bs.stream());
-			});
 
 			return chain;
 		});
