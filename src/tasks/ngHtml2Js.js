@@ -3,7 +3,7 @@ import cache from 'gulp-cached';
 import changed from 'gulp-changed';
 import to5 from 'gulp-babel';
 import uglify from 'gulp-uglify';
-import htmlMin from 'gulp-minify-html';
+import htmlMin from 'gulp-htmlmin';
 import ngHtml2Js from 'gulp-ng-html2js';
 import insert from 'gulp-insert';
 import chmod from 'gulp-chmod';
@@ -38,9 +38,7 @@ class NgHtml2JsTask {
 		this.options.uglifyOptions = _merge({}, defaultUglifyOptions, this.options.uglifyOptions);
 
 		this.options.minimize = _merge({
-			empty: true,
-			spare: true,
-			quotes: true
+			keepClosingSlash: true
 		}, this.options.minimize);
 
 		return this;
