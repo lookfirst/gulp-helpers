@@ -3,7 +3,7 @@ import cache from 'gulp-cached';
 import changed from 'gulp-changed';
 import to5 from 'gulp-babel';
 import uglify from 'gulp-uglify';
-import htmlMin from 'gulp-minify-html';
+import htmlMin from 'gulp-htmlmin';
 import ngHtml2Js from 'gulp-ng-html2js';
 import insert from 'gulp-insert';
 import chmod from 'gulp-chmod';
@@ -38,9 +38,7 @@ class NgHtml2JsTask {
 		this.options.uglifyOptions = _merge({}, defaultUglifyOptions, this.options.uglifyOptions);
 
 		this.options.minimize = _merge({
-			empty: true,
-			spare: true,
-			quotes: true
+			keepClosingSlash: true
 		}, this.options.minimize);
 
 		return this;
@@ -50,6 +48,7 @@ class NgHtml2JsTask {
 		let options = this.options;
 		gulp.task(options.taskName, options.taskDeps, () => {
 			let chain;
+
 			if (this.options.ngHtml2Js && this.options.ngHtml2Js.extension === '.ts') {
 				chain = gulp.src(options.src)
 					.pipe(cache(options.taskName))
@@ -59,14 +58,15 @@ class NgHtml2JsTask {
 					.pipe(insert.prepend(options.prepend))
 			} else {
 				chain = gulp.src(options.src)
-				 .pipe(cache(options.taskName))
-				 .pipe(plumber())
-				 .pipe(changed(options.dest, {extension: '.html'}))
-				 .pipe(htmlMin(options.minimize))
-				 .pipe(ngHtml2Js(options.ngHtml2Js))
-				 .pipe(insert.prepend(options.prepend))
-				 .pipe(to5(options.compilerOptions));
+					.pipe(cache(options.taskName))
+					.pipe(plumber())
+					.pipe(changed(options.dest, {extension: '.html'}))
+					.pipe(htmlMin(options.minimize))
+					.pipe(ngHtml2Js(options.ngHtml2Js))
+					.pipe(insert.prepend(options.prepend))
+					.pipe(to5(options.compilerOptions));
 			}
+
 			if (chain) {
 				if (options.uglify) {
 					chain = chain.pipe(uglify(options.uglifyOptions));

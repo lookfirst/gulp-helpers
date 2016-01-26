@@ -1,4 +1,4 @@
-import htmlMin from 'gulp-minify-html';
+import htmlMin from 'gulp-htmlmin';
 import plumber from 'gulp-plumber';
 import chmod from 'gulp-chmod';
 import _isUndefined from 'lodash/lang/isUndefined';
@@ -17,9 +17,7 @@ class HtmlMinifyTask {
 		}
 
 		this.options.minimize = _merge({
-			empty: true,
-			spare: true,
-			quotes: true
+			keepClosingSlash: true
 		}, this.options.minimize);
 
 		return this;
