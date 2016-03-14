@@ -1,6 +1,6 @@
 import jshint  from 'gulp-jshint';
 import stylish from 'jshint-stylish';
-import _isUndefined from 'lodash/lang/isUndefined';
+import _isUndefined from 'lodash/isUndefined';
 
 class JshintTask {
 	setOptions(options) {

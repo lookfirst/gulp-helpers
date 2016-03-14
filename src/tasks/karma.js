@@ -1,5 +1,5 @@
 import {server} from 'karma';
-import _isUndefined from 'lodash/lang/isUndefined';
+import _isUndefined from 'lodash/isUndefined';
 
 class KarmaTask {
 	setOptions(options) {

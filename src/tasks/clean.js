@@ -1,7 +1,7 @@
 import vinylPaths from 'vinyl-paths';
 import del from 'del';
-import _isUndefined from 'lodash/lang/isUndefined';
-import _isArray from 'lodash/lang/isArray';
+import _isUndefined from 'lodash/isUndefined';
+import _isArray from 'lodash/isArray';
 
 class CleanTask {
 	setOptions(options) {

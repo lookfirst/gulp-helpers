@@ -9,9 +9,9 @@ import uglify from 'gulp-uglify';
 import ngAnnotate from 'gulp-ng-annotate';
 import rename from 'gulp-rename';
 import chmod from 'gulp-chmod';
-import _isUndefined from 'lodash/lang/isUndefined';
-import _merge from 'lodash/object/merge';
-import _forEach from 'lodash/collection/forEach';
+import _isUndefined from 'lodash/isUndefined';
+import _merge from 'lodash/merge';
+import _forEach from 'lodash/forEach';
 
 let defaultCompilerOptions = {
 	externalHelpers: true,

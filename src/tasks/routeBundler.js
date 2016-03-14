@@ -1,5 +1,5 @@
 import routeBundler from 'systemjs-route-bundler';
-import _isUndefined from 'lodash/lang/isUndefined';
+import _isUndefined from 'lodash/isUndefined';
 
 class RouteBundlerTask {
 	setOptions(options) {

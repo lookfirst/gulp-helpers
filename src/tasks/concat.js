@@ -4,7 +4,7 @@ import concat from 'gulp-concat';
 import replace from 'gulp-replace-task';
 import sourcemaps from 'gulp-sourcemaps';
 import chmod from 'gulp-chmod';
-import _isUndefined from 'lodash/lang/isUndefined';
+import _isUndefined from 'lodash/isUndefined';
 
 class ConcatTask {
 	setOptions(options) {

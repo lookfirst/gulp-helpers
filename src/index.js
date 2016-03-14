@@ -1,4 +1,4 @@
-import _isUndefined from 'lodash/lang/isUndefined';
+import _isUndefined from 'lodash/isUndefined';
 
 import Situation from './Situation';
 import TaskMaker from './TaskMaker';

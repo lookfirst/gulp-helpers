@@ -1,7 +1,7 @@
 import del from 'del';
 import path from 'path';
 import gutil from 'gulp-util';
-import _isUndefined from 'lodash/lang/isUndefined';
+import _isUndefined from 'lodash/isUndefined';
 
 class WatchTask {
 	setOptions(options) {

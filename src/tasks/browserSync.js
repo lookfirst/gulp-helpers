@@ -1,8 +1,8 @@
-import _isArray from 'lodash/lang/isArray';
-import _isString from 'lodash/lang/isString';
-import _isUndefined from 'lodash/lang/isUndefined';
-import _isBoolean from 'lodash/lang/isBoolean';
-import _merge from 'lodash/object/merge';
+import _isArray from 'lodash/isArray';
+import _isString from 'lodash/isString';
+import _isUndefined from 'lodash/isUndefined';
+import _isBoolean from 'lodash/isBoolean';
+import _merge from 'lodash/merge';
 import expressHistoryApiFallback from 'express-history-api-fallback';
 import connectHistoryApiFallback from 'connect-history-api-fallback';
 

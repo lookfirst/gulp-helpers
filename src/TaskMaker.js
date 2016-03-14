@@ -1,6 +1,6 @@
 import gutil from 'gulp-util';
 import browserSync from 'browser-sync';
-import _merge from 'lodash/object/merge';
+import _merge from 'lodash/merge';
 import notify from 'gulp-notify';
 
 class TaskMaker {

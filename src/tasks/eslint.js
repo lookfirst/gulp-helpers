@@ -1,5 +1,5 @@
 import eslint from 'gulp-eslint';
-import _isUndefined from 'lodash/lang/isUndefined';
+import _isUndefined from 'lodash/isUndefined';
 
 class EslintTask {
 	setOptions(options) {

@@ -1,7 +1,7 @@
 import plumber from 'gulp-plumber';
 import zip from 'gulp-zip';
 import chmod from 'gulp-chmod';
-import _isUndefined from 'lodash/lang/isUndefined';
+import _isUndefined from 'lodash/isUndefined';
 
 class CompressTask {
 	setOptions(options) {

@@ -2,8 +2,8 @@ import sourcemaps from 'gulp-sourcemaps';
 import uglify from 'gulp-uglify';
 import plumber from 'gulp-plumber';
 import chmod from 'gulp-chmod';
-import _isUndefined from 'lodash/lang/isUndefined';
-import _merge from 'lodash/object/merge';
+import _isUndefined from 'lodash/isUndefined';
+import _merge from 'lodash/merge';
 
 let defaultUglifyOptions = {
 	mangle: true

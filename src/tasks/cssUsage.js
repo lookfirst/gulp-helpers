@@ -1,6 +1,6 @@
 import plumber from 'gulp-plumber';
 import cssUsage from 'gulp-css-usage';
-import _isUndefined from 'lodash/lang/isUndefined';
+import _isUndefined from 'lodash/isUndefined';
 
 class CssUsageTask {
 	setOptions(options) {

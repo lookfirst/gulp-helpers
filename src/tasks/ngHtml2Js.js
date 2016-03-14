@@ -7,9 +7,9 @@ import htmlMin from 'gulp-htmlmin';
 import ngHtml2Js from 'gulp-ng-html2js';
 import insert from 'gulp-insert';
 import chmod from 'gulp-chmod';
-import _isUndefined from 'lodash/lang/isUndefined';
-import _merge from 'lodash/object/merge';
-import _forEach from 'lodash/collection/forEach';
+import _isUndefined from 'lodash/isUndefined';
+import _merge from 'lodash/merge';
+import _forEach from 'lodash/forEach';
 
 import babel from './babel';
 
