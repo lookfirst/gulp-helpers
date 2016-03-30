@@ -1,6 +1,6 @@
 {
   "name": "gulp-helpers",
-  "version": "4.1.0",
+  "version": "5.0.0",
   "description": "A set of tasks and helpers for gulp",
   "main": "dist/index.js",
   "license": "MIT",
@@ -66,7 +66,6 @@
     "karma-coverage": "^0.5.5",
     "karma-jasmine": "^0.3.7",
     "karma-jasmine-html-reporter": "^0.2.0",
-    "karma-phantomjs-launcher": "^1.0.0",
     "karma-verbose-reporter": "0.0.3",
     "less-plugin-clean-css": "^1.5.1",
     "lodash": "^4.6.1",
