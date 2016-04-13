@@ -1,6 +1,6 @@
 {
   "name": "gulp-helpers",
-  "version": "5.0.0",
+  "version": "5.1.0",
   "description": "A set of tasks and helpers for gulp",
   "main": "dist/index.js",
   "license": "MIT",
@@ -29,7 +29,7 @@
   "dependencies": {
     "babel": "^5.8.35",
     "babel-runtime": "^5.8.35",
-    "browser-sync": "^2.11.1",
+    "browser-sync": "^2.12.3",
     "connect-history-api-fallback": "^1.1.0",
     "del": "^2.2.0",
     "express-history-api-fallback": "^2.0.0",
@@ -68,7 +68,7 @@
     "karma-jasmine-html-reporter": "^0.2.0",
     "karma-verbose-reporter": "0.0.3",
     "less-plugin-clean-css": "^1.5.1",
-    "lodash": "^4.6.1",
+    "lodash": "^4.11.0",
     "run-sequence": "^1.1.5",
     "systemjs-route-bundler": "^1.5.1",
     "vinyl-paths": "^2.1.0"
