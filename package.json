@@ -1,6 +1,6 @@
 {
   "name": "gulp-helpers",
-  "version": "6.0.1",
+  "version": "6.0.2",
   "description": "A set of tasks and helpers for gulp",
   "main": "dist/index.js",
   "license": "MIT",
@@ -17,17 +17,20 @@
     "url": "https://github.com/lookfirst/gulp-helpers/issues"
   },
   "scripts": {
-    "test": "npm run-script compile && mocha --compilers js:babel/register",
+    "test": "npm run-script compile && mocha --compilers js:babel-core/register",
     "compile": "babel src --out-dir dist --optional runtime",
     "prepublish": "npm run-script compile"
   },
   "devDependencies": {
+    "babel-core": "^6.7.7",
+    "babel-preset-es2015": "^6.6.0",
     "chai": "*",
     "gulp": "^3.9.1",
     "mocha": "*"
   },
   "dependencies": {
-    "babel": "^6.5.2",
+    "babel-cli": "^6.7.7",
+    "babel-register": "^6.7.2",
     "babel-runtime": "^6.6.1",
     "browser-sync": "^2.12.5",
     "connect-history-api-fallback": "^1.2.0",
