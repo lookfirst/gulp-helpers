@@ -14,7 +14,6 @@ import _merge from 'lodash/merge';
 import _forEach from 'lodash/forEach';
 
 let defaultCompilerOptions = {
-	externalHelpers: true,
 	comments: false,
 	compact: false
 };
