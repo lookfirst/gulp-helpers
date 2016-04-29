@@ -75,5 +75,9 @@
     "run-sequence": "^1.1.5",
     "systemjs-route-bundler": "^1.6.0",
     "vinyl-paths": "^2.1.0"
+  },
+  "engines": {
+    "node": "5.x.x",
+    "npm": "3.x.x"
   }
 }
