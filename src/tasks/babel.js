@@ -4,7 +4,7 @@ import cache from 'gulp-cached';
 import changed from 'gulp-changed';
 import sourcemaps from 'gulp-sourcemaps';
 import coffee from 'gulp-coffee';
-import to5 from 'gulp-babel';
+import babel from 'gulp-babel';
 import uglify from 'gulp-uglify';
 import ngAnnotate from 'gulp-ng-annotate';
 import rename from 'gulp-rename';
@@ -15,7 +15,9 @@ import _forEach from 'lodash/forEach';
 
 let defaultCompilerOptions = {
 	comments: false,
-	compact: false
+	compact: false,
+	presets: ['es2015'],
+	plugins: ['transform-runtime']
 };
 
 let defaultUglifyOptions = {
@@ -69,7 +71,7 @@ class BabelTask {
 				chain = chain.pipe(coffee(options.coffeeOptions).on('error', gutil.log));
 			}
 
-			chain = chain.pipe(to5(options.compilerOptions));
+			chain = chain.pipe(babel(options.compilerOptions));
 
 			if (options.ngAnnotate) {
 				chain = chain.pipe(ngAnnotate(options.ngAnnotateOptions));
