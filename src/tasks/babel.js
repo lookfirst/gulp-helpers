@@ -16,8 +16,7 @@ import _forEach from 'lodash/forEach';
 let defaultCompilerOptions = {
 	comments: false,
 	compact: false,
-	presets: ['es2015'],
-	plugins: ['transform-runtime']
+	presets: ['es2015']
 };
 
 let defaultUglifyOptions = {
