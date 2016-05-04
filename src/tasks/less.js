@@ -7,7 +7,6 @@ import filter from 'gulp-filter';
 import plumber from 'gulp-plumber';
 import less from 'gulp-less';
 import lessDependents from 'gulp-less-dependents';
-import cache from 'gulp-cached';
 import sourcemaps from 'gulp-sourcemaps';
 import chmod from 'gulp-chmod';
 import lessPluginCleanCSS from 'less-plugin-clean-css';
