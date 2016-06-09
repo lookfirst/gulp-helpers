@@ -10,9 +10,13 @@ class TaskMaker {
 	}
 
 	createBrowserSync(name) {
-		let bs = browserSync.create(name);
-		this.globalBrowserSyncs[name] = bs;
-		return bs;
+		if (this.globalBrowserSyncs[name]) {
+			return this.globalBrowserSyncs[name];
+		} else {
+			let bs = browserSync.create(name);
+			this.globalBrowserSyncs[name] = bs;
+			return bs;
+		}
 	}
 
 	defineTask(name, options = {}) {
