@@ -62,7 +62,7 @@
     "gulp-sourcemaps": "^2.0.0-alpha",
     "gulp-uglify": "^1.5.3",
     "gulp-util": "~3.0.7",
-    "gulp-watch": "^4.3.5",
+    "gulp-watch": "^4.3.7",
     "gulp-zip": "^3.2.0",
     "jshint-stylish": "^2.2.0",
     "karma": "^0.13.22",
