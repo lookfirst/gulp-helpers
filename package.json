@@ -65,7 +65,7 @@
     "gulp-watch": "^4.3.5",
     "gulp-zip": "^3.2.0",
     "jshint-stylish": "^2.2.0",
-    "karma": "^0.13.22",
+    "karma": "^1.0.0",
     "karma-babel-preprocessor": "^6.0.1",
     "karma-chrome-launcher": "^1.0.1",
     "karma-coverage": "^1.0.0",
