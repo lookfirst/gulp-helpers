@@ -73,7 +73,7 @@
     "karma-jasmine-html-reporter": "^0.2.0",
     "karma-verbose-reporter": "0.0.3",
     "less-plugin-clean-css": "^1.5.1",
-    "lodash": "^4.13.1",
+    "lodash": "^4.14.1",
     "run-sequence": "^1.2.2",
     "systemjs-route-bundler": "^1.6.0",
     "vinyl-paths": "^2.1.0"
