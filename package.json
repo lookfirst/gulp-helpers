@@ -43,7 +43,7 @@
     "gulp-changed": "^1.3.0",
     "gulp-chmod": "^1.3.0",
     "gulp-coffee": "^2.3.2",
-    "gulp-concat": "^2.6.0",
+    "gulp-concat": "^2.6.1",
     "gulp-css-usage": "^2.0.2",
     "gulp-eslint": "^3.0.1",
     "gulp-filter": "^4.0.0",
