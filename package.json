@@ -27,7 +27,7 @@
     "mocha": "*"
   },
   "dependencies": {
-    "babel-cli": "^6.10.1",
+    "babel-cli": "^6.24.0",
     "babel-core": "^6.10.4",
     "babel-plugin-transform-es2015-modules-systemjs": "^6.9.0",
     "babel-plugin-transform-runtime": "^6.9.0",
