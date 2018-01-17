@@ -79,7 +79,7 @@
     "vinyl-paths": "^2.1.0"
   },
   "engines": {
-    "node": "5.x.x",
-    "npm": "3.x.x"
+    "node": "8.x.x",
+    "npm": "5.x.x"
   }
 }
