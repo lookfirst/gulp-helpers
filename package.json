@@ -63,7 +63,7 @@
     "gulp-uglify": "^1.5.4",
     "gulp-util": "~3.0.7",
     "gulp-watch": "^4.3.8",
-    "gulp-zip": "^3.2.0",
+    "gulp-zip": "^4.0.0",
     "jshint-stylish": "^2.2.0",
     "karma": "^1.1.1",
     "karma-babel-preprocessor": "^6.0.1",
